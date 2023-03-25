@@ -2,6 +2,30 @@ package com.alonsogp.nhl_app.features.teams.data.remote.api
 
 import com.alonsogp.nhl_app.features.teams.domain.*
 
+fun ConferenceListApiModel.toDomain(): ConferenceListModel = ConferenceListModel(
+    this.conferences.map {
+        it.toDomain()
+    }
+)
+
+fun DivisionListApiModel.toDomain(): DivisionListModel = DivisionListModel(
+    this.divisions.map {
+        it.toDomain()
+    }
+)
+
+fun TeamListApiModel.toDomain(): TeamListModel = TeamListModel(
+    this.teams.map {
+        it.toDomain()
+    }
+)
+
+fun TeamDetailListApiModel.toDomain(): TeamDetailListModel = TeamDetailListModel(
+    this.team.map {
+        it.toDomain()
+    }
+)
+
 fun ConferenceApiModel.toDomain(): ConferenceModel = ConferenceModel(
     this.id,
     this.name

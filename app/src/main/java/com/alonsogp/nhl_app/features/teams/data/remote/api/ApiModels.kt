@@ -1,7 +1,22 @@
 package com.alonsogp.nhl_app.features.teams.data.remote.api
 
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.Path
+
+data class ConferenceListApiModel(
+    @SerializedName("conferences") val conferences: List<ConferenceApiModel>
+)
+
+data class DivisionListApiModel(
+    @SerializedName("divisions") val divisions: List<DivisionApiModel>
+)
+
+data class TeamListApiModel(
+    @SerializedName("teams") val teams: List<TeamApiModel>
+)
+
+data class TeamDetailListApiModel(
+    @SerializedName("team") val team: List<TeamDetailApiModel>
+)
 
 data class ConferenceApiModel(
     @SerializedName("id") val id: Int,

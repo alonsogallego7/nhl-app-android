@@ -4,8 +4,8 @@ import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
 
 interface TeamsRepository {
-    suspend fun getConferences(): Either<ErrorApp, List<ConferenceModel>>
-    suspend fun getDivisionsByConference(conference: Int): Either<ErrorApp, List<DivisionModel>>
-    suspend fun getTeamsByDivision(division: Int): Either<ErrorApp, List<TeamModel>>
-    suspend fun getTeamById(id: Int): Either<ErrorApp, TeamDetailModel>
+    suspend fun getConferences(): Either<ErrorApp, List<ConferenceListModel>>
+    suspend fun getDivisionsByConference(conference: Int): Either<ErrorApp, List<DivisionListModel>>
+    suspend fun getTeamsByDivision(division: Int): Either<ErrorApp, List<TeamListModel>>
+    suspend fun getTeamById(id: Int): Either<ErrorApp, TeamDetailListModel>
 }

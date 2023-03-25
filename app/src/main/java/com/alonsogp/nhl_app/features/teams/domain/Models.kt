@@ -1,6 +1,24 @@
 package com.alonsogp.nhl_app.features.teams.domain
 
-import com.alonsogp.nhl_app.features.teams.data.remote.api.*
+import com.alonsogp.nhl_app.features.teams.data.remote.api.ConferenceApiModel
+import com.alonsogp.nhl_app.features.teams.data.remote.api.DivisionApiModel
+import com.alonsogp.nhl_app.features.teams.data.remote.api.TeamApiModel
+
+data class ConferenceListModel(
+    val conferences: List<ConferenceModel>
+)
+
+data class DivisionListModel(
+    val divisions: List<DivisionModel>
+)
+
+data class TeamListModel(
+    val teams: List<TeamModel>
+)
+
+data class TeamDetailListModel(
+    val team: List<TeamDetailModel>
+)
 
 data class ConferenceModel(
     val id: Int,
