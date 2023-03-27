@@ -40,7 +40,7 @@ class ConferencesViewModel @Inject constructor(
         )
     }
 
-    private fun successResponse(conferences : List<ConferenceListModel>){
+    private fun successResponse(conferences : ConferenceListModel){
         _uiState.postValue(
             UiState(
                 isLoading = false,
@@ -51,7 +51,7 @@ class ConferencesViewModel @Inject constructor(
 
     data class UiState(
         val isLoading: Boolean = true,
-        val conferences: List<ConferenceListModel>? = null,
+        val conferences: ConferenceListModel? = null,
         val  error: ErrorApp? = null
     )
 }

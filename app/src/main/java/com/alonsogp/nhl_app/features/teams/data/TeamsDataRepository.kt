@@ -11,15 +11,15 @@ class TeamsDataRepository @Inject constructor(
     private val remoteDataSource: TeamsApiRemoteSource
 ): TeamsRepository {
 
-    override suspend fun getConferences(): Either<ErrorApp, List<ConferenceListModel>> {
+    override suspend fun getConferences(): Either<ErrorApp, ConferenceListModel> {
         return remoteDataSource.getConferences()
     }
 
-    override suspend fun getDivisionsByConference(conference: Int): Either<ErrorApp, List<DivisionListModel>> {
+    override suspend fun getDivisionsByConference(conference: Int): Either<ErrorApp, DivisionListModel> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getTeamsByDivision(division: Int): Either<ErrorApp, List<TeamListModel>> {
+    override suspend fun getTeamsByDivision(division: Int): Either<ErrorApp, TeamListModel> {
         TODO("Not yet implemented")
     }
 

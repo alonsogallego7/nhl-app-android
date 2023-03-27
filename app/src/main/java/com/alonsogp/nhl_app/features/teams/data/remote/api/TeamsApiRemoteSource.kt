@@ -8,35 +8,30 @@ import com.alonsogp.nhl_app.features.teams.data.remote.TeamsRemoteDataSource
 import com.alonsogp.nhl_app.features.teams.domain.*
 import javax.inject.Inject
 
-class TeamsApiRemoteSource @Inject constructor(private val apiClient: TeamsApiEndPoints): TeamsRemoteDataSource{
+class TeamsApiRemoteSource @Inject constructor(private val apiClient: TeamsApiEndPoints) :
+    TeamsRemoteDataSource {
 
-    override suspend fun getConferences(): Either<ErrorApp, List<ConferenceListModel>> {
+    override suspend fun getConferences(): Either<ErrorApp, ConferenceListModel> {
         return apiCall {
             apiClient.getConferences()
         }.map { conferences ->
-            conferences.map { conference ->
-                conference.toDomain()
-            }
+            conferences.toDomain()
         }
     }
 
-    override suspend fun getDivisions(): Either<ErrorApp, List<DivisionListModel>> {
+    override suspend fun getDivisions(): Either<ErrorApp, DivisionListModel> {
         return apiCall {
             apiClient.getDivisions()
         }.map { divisions ->
-            divisions.map { division ->
-                division.toDomain()
-            }
+            divisions.toDomain()
         }
     }
 
-    override suspend fun getTeams(): Either<ErrorApp, List<TeamListModel>> {
+    override suspend fun getTeams(): Either<ErrorApp, TeamListModel> {
         return apiCall {
             apiClient.getTeams()
         }.map { teams ->
-            teams.map { team ->
-                team.toDomain()
-            }
+            teams.toDomain()
         }
     }
 
