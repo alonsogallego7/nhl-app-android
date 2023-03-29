@@ -32,7 +32,8 @@ data class DivisionApiModel(
 data class TeamApiModel(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
-    @SerializedName("abbreviation") val abbreviation: String
+    @SerializedName("abbreviation") val abbreviation: String,
+    @SerializedName("division") val division: DivisionApiModel
 )
 
 data class TeamDetailApiModel(

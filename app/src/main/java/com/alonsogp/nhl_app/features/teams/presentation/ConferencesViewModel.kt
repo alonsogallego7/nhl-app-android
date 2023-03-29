@@ -52,6 +52,6 @@ class ConferencesViewModel @Inject constructor(
     data class UiState(
         val isLoading: Boolean = true,
         val conferences: ConferenceListModel? = null,
-        val  error: ErrorApp? = null
+        val error: ErrorApp? = null
     )
 }
