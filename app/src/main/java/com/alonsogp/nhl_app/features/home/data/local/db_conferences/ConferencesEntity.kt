@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 const val TABLE_NAME_CONFERENCES = "conferences"
+
 @Entity(tableName = TABLE_NAME_CONFERENCES)
 data class ConferenceEntity(
     @PrimaryKey

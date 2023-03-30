@@ -10,13 +10,15 @@ fun ConferenceApiModel.toDomain(): ConferenceModel = ConferenceModel(
 fun DivisionApiModel.toDomain(): DivisionModel = DivisionModel(
     this.id,
     this.name,
-    this.conference.toDomain()
+    this.conference.id
 )
 
 fun TeamApiModel.toDomain(): TeamModel = TeamModel(
     this.id,
     this.name,
-    this.abbreviation
+    this.abbreviation,
+    "https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/3.svg",
+    this.division.id
 )
 
 fun TeamDetailApiModel.toDomain(): TeamDetailModel = TeamDetailModel(

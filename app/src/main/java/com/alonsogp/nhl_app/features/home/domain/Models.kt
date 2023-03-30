@@ -1,21 +1,5 @@
 package com.alonsogp.nhl_app.features.home.domain
 
-data class ConferenceListModel(
-    val conferences: List<ConferenceModel>
-)
-
-data class DivisionListModel(
-    val divisions: List<DivisionModel>
-)
-
-data class TeamListModel(
-    val teams: List<TeamModel>
-)
-
-data class TeamDetailListModel(
-    val team: List<TeamDetailModel>
-)
-
 data class ConferenceModel(
     val id: Int,
     val name: String
@@ -24,13 +8,15 @@ data class ConferenceModel(
 data class DivisionModel(
     val id: Int,
     val name: String,
-    val conference: ConferenceModel
+    val conferenceId: Int
 )
 
 data class TeamModel(
     val id: Int,
     val name: String,
-    val abbreviation: String
+    val abbreviation: String,
+    val logoUrl: String,
+    val divisionId: Int
 )
 
 data class TeamDetailModel(

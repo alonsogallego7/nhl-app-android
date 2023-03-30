@@ -2,6 +2,8 @@ package com.alonsogp.nhl_app.features.home.di
 
 import com.alonsogp.nhl_app.app.data.local.db.AppDatabase
 import com.alonsogp.nhl_app.features.home.data.local.db_conferences.ConferencesDao
+import com.alonsogp.nhl_app.features.home.data.local.db_divisions.DivisionsDao
+import com.alonsogp.nhl_app.features.home.data.local.db_teams.TeamsDao
 import com.alonsogp.nhl_app.features.home.data.remote.api.HomeApiEndPoints
 import dagger.Module
 import dagger.Provides
@@ -23,5 +25,15 @@ object HomeProvidesModule {
     @Singleton
     fun provideConferencesDao(appDatabase: AppDatabase) : ConferencesDao =
         appDatabase.conferencesDao()
+
+    @Provides
+    @Singleton
+    fun provideDivisionsDao(appDatabase: AppDatabase) : DivisionsDao =
+        appDatabase.divisionsDao()
+
+    @Provides
+    @Singleton
+    fun provideTeamsDao(appDatabase: AppDatabase) : TeamsDao =
+        appDatabase.teamsDao()
 
 }
