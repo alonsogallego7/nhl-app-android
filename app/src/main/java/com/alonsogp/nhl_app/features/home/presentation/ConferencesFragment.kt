@@ -1,4 +1,4 @@
-package com.alonsogp.nhl_app.features.teams.presentation
+package com.alonsogp.nhl_app.features.home.presentation
 
 import android.os.Bundle
 import android.util.Log

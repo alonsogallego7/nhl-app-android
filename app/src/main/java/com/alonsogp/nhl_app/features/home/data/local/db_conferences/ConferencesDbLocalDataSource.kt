@@ -1,15 +1,15 @@
-package com.alonsogp.nhl_app.features.teams.data.local.db_conferences
+package com.alonsogp.nhl_app.features.home.data.local.db_conferences
 
 import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
 import com.alonsogp.nhl_app.app.domain.functional.left
 import com.alonsogp.nhl_app.app.domain.functional.right
-import com.alonsogp.nhl_app.features.teams.data.local.ConferencesLocalDataSource
-import com.alonsogp.nhl_app.features.teams.domain.ConferenceModel
+import com.alonsogp.nhl_app.features.home.data.local.ConferencesLocalDataSource
+import com.alonsogp.nhl_app.features.home.domain.ConferenceModel
 import javax.inject.Inject
 
 class ConferencesDbLocalDataSource @Inject constructor(private val conferencesDao: ConferencesDao) : ConferencesLocalDataSource {
-    override suspend fun getConferences(): Either<ErrorApp, List<ConferenceModel>> {
+    override suspend fun getAll(): Either<ErrorApp, List<ConferenceModel>> {
         return try {
             val conferences = conferencesDao.getAll()
 
@@ -25,10 +25,10 @@ class ConferencesDbLocalDataSource @Inject constructor(private val conferencesDa
         }
     }
 
-    override suspend fun saveConferences(conferences: List<ConferenceModel>): Either<ErrorApp, Boolean> {
+    override suspend fun save(conferences: List<ConferenceModel>): Either<ErrorApp, Boolean> {
         return try {
             conferences.map {
-                conferencesDao.save(it.toEntity())
+                it.toEntity()
             }
             true.right()
         } catch (e: Exception) {

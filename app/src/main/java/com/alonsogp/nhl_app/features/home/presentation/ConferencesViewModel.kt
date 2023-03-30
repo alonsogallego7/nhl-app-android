@@ -1,13 +1,12 @@
-package com.alonsogp.nhl_app.features.teams.presentation
+package com.alonsogp.nhl_app.features.home.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alonsogp.nhl_app.app.domain.ErrorApp
-import com.alonsogp.nhl_app.features.teams.domain.ConferenceListModel
-import com.alonsogp.nhl_app.features.teams.domain.ConferenceModel
-import com.alonsogp.nhl_app.features.teams.domain.GetConferencesUseCase
+import com.alonsogp.nhl_app.features.home.domain.ConferenceModel
+import com.alonsogp.nhl_app.features.home.domain.GetConferencesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,7 +39,7 @@ class ConferencesViewModel @Inject constructor(
         )
     }
 
-    private fun successResponse(conferences : ConferenceListModel){
+    private fun successResponse(conferences : List<ConferenceModel>){
         _uiState.postValue(
             UiState(
                 isLoading = false,
@@ -51,7 +50,7 @@ class ConferencesViewModel @Inject constructor(
 
     data class UiState(
         val isLoading: Boolean = true,
-        val conferences: ConferenceListModel? = null,
+        val conferences: List<ConferenceModel>? = null,
         val error: ErrorApp? = null
     )
 }

@@ -1,4 +1,4 @@
-package com.alonsogp.nhl_app.features.teams.data.local.db_conferences
+package com.alonsogp.nhl_app.features.home.data.local.db_conferences
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,8 +8,8 @@ import androidx.room.Query
 @Dao
 interface ConferencesDao {
     @Query("SELECT * FROM $TABLE_NAME_CONFERENCES")
-    fun getAll(): List<ConferencesEntity>
+    fun getAll(): List<ConferenceEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(conferencesEntity: ConferencesEntity)
+    fun save(conferencesEntity: List<ConferenceEntity>)
 }

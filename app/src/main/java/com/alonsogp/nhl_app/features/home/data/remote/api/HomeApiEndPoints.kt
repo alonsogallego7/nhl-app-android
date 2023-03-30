@@ -1,10 +1,10 @@
-package com.alonsogp.nhl_app.features.teams.data.remote.api
+package com.alonsogp.nhl_app.features.home.data.remote.api
 
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface TeamsApiEndPoints {
+interface HomeApiEndPoints {
     @GET("conferences.json")
     suspend fun getConferences() : Response<ConferenceListApiModel>
 

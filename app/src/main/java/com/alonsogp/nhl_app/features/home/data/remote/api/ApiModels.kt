@@ -1,4 +1,4 @@
-package com.alonsogp.nhl_app.features.teams.data.remote.api
+package com.alonsogp.nhl_app.features.home.data.remote.api
 
 import com.google.gson.annotations.SerializedName
 
