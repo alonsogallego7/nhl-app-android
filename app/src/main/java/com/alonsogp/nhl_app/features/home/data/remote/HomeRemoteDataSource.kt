@@ -8,5 +8,6 @@ interface HomeRemoteDataSource {
     suspend fun getConferences(): Either<ErrorApp, List<ConferenceModel>>
     suspend fun getDivisions(): Either<ErrorApp, List<DivisionModel>>
     suspend fun getTeams(): Either<ErrorApp, List<TeamModel>>
-    suspend fun getTeamById(id: Int): Either<ErrorApp, List<TeamDetailModel>>
+    suspend fun getTeamById(id: Int): Either<ErrorApp, TeamDetailModel>
+    suspend fun getPlayersByTeam(id: Int): Either<ErrorApp, List<PlayerModel>>
 }

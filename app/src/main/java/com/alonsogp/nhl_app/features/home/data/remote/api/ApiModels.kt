@@ -41,8 +41,7 @@ data class TeamDetailApiModel(
     @SerializedName("name") val name: String,
     @SerializedName("venue") val venue: VenueApiModel,
     @SerializedName("abbreviation") val abbreviation: String,
-    @SerializedName("firstYearOfPlay") val first_year: String,
-    @SerializedName("roster") val roster: RosterApiModel
+    @SerializedName("firstYearOfPlay") val firstYearOfPlay: String,
 )
 
 data class VenueApiModel(
@@ -51,7 +50,7 @@ data class VenueApiModel(
 )
 
 data class RosterApiModel(
-    @SerializedName("roster") val players: List<PlayerApiModel>
+    @SerializedName("roster") val roster: List<PlayerApiModel>
 )
 
 data class PlayerApiModel(

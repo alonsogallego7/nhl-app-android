@@ -3,7 +3,7 @@ package com.alonsogp.nhl_app.features.home.data.local.db_team_detail
 import com.alonsogp.nhl_app.features.home.domain.*
 
 // TeamDetailEntity
-fun TeamDetailEntity.toDomain(players: List<PlayerEntity>) = TeamDetailModel(
+fun TeamDetailEntity.toDomain(players: List<PlayerEntity>) = TeamDetailWithRosterModel(
     this.id,
     this.name,
     this.venue.toDomain(),
@@ -36,16 +36,15 @@ fun VenueModel.toEntity() = VenueEntity(
 fun PlayerEntity.toDomain() = PlayerModel(
     this.person.toDomain(),
     this.jerseyNumber,
-    this.position.toDomain(),
-    this.teamId
+    this.position.toDomain()
 )
 
-fun PlayerModel.toEntity() = PlayerEntity(
+fun PlayerModel.toEntity(teamId: Int) = PlayerEntity(
     0,
     this.person.toEntity(),
     this.jerseyNumber,
     this.position.toEntity(),
-    this.teamId
+    teamId
 )
 
 // PersonEntity

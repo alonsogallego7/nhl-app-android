@@ -26,13 +26,12 @@ fun TeamDetailApiModel.toDomain(): TeamDetailModel = TeamDetailModel(
     this.name,
     this.venue.toDomain(),
     this.abbreviation,
-    this.first_year,
-    this.roster.toDomain()
+    this.firstYearOfPlay
 )
 
-fun RosterApiModel?.toDomain(): List<PlayerModel> {
-    return this?.players?.map { it.toDomain() } ?: emptyList()
-}
+fun RosterApiModel.toDomain(): RosterModel = RosterModel(
+    this.roster.map { it.toDomain() }
+)
 
 fun VenueApiModel.toDomain(): VenueModel = VenueModel(
     this.name,
@@ -42,8 +41,7 @@ fun VenueApiModel.toDomain(): VenueModel = VenueModel(
 fun PlayerApiModel.toDomain(): PlayerModel = PlayerModel(
     this.person.toDomain(),
     this.jerseyNumber,
-    this.position.toDomain(),
-    this.teamId
+    this.position.toDomain()
 )
 
 fun PersonApiModel.toDomain(): PersonModel = PersonModel(

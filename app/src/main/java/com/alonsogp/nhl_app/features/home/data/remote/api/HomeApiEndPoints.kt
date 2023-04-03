@@ -16,4 +16,7 @@ interface HomeApiEndPoints {
 
     @GET("teams/{id}?expand=team.roster.json")
     suspend fun getTeamById(@Path("id") id: Int): Response<TeamDetailListApiModel>
+
+    @GET("teams/{id}/roster.json")
+    suspend fun getPlayersByTeam(@Path("id") id: Int): Response<List<PlayerApiModel>>
 }

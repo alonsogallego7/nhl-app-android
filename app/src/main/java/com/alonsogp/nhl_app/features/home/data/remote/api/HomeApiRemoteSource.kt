@@ -3,6 +3,7 @@ package com.alonsogp.nhl_app.features.home.data.remote.api
 import com.alonsogp.nhl_app.app.data.remote.apiCall
 import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
+import com.alonsogp.nhl_app.app.domain.functional.flatMap
 import com.alonsogp.nhl_app.features.home.data.remote.HomeRemoteDataSource
 import com.alonsogp.nhl_app.features.home.domain.*
 import javax.inject.Inject
@@ -34,11 +35,21 @@ class HomeApiRemoteSource @Inject constructor(private val apiClient: HomeApiEndP
         }
     }
 
-    override suspend fun getTeamById(id: Int): Either<ErrorApp, List<TeamDetailModel>> {
+    override suspend fun getTeamById(id: Int): Either<ErrorApp, TeamDetailModel> {
         return apiCall {
             apiClient.getTeamById(id)
         }.map {
-            it.team.map { it.toDomain() }
+            it.team.first().toDomain()
+        }
+    }
+
+    override suspend fun getPlayersByTeam(id: Int): Either<ErrorApp, List<PlayerModel>> {
+        return apiCall {
+            apiClient.getPlayersByTeam(id)
+        }.map {
+            it.map {
+                it.toDomain()
+            }
         }
     }
 }

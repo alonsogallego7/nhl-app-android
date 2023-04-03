@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.features.home.domain.GetTeamDetailUseCase
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailModel
+import com.alonsogp.nhl_app.features.home.domain.TeamDetailWithRosterModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,7 +40,7 @@ class TeamDetailViewModel @Inject constructor(
         )
     }
 
-    private fun successResponse(teamDetail : TeamDetailModel){
+    private fun successResponse(teamDetail : TeamDetailWithRosterModel){
         _uiState.postValue(
             UiState(
                 isLoading = false,
@@ -50,7 +51,7 @@ class TeamDetailViewModel @Inject constructor(
 
     data class UiState(
         val isLoading: Boolean = true,
-        val teamDetail: TeamDetailModel? = null,
+        val teamDetail: TeamDetailWithRosterModel? = null,
         val error: ErrorApp? = null
     )
 }

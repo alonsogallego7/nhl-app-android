@@ -5,7 +5,7 @@ import com.alonsogp.nhl_app.app.domain.functional.Either
 import javax.inject.Inject
 
 class GetTeamDetailUseCase @Inject constructor(private val teamDetailRepository: TeamDetailRepository) {
-    suspend operator fun invoke(teamId: Int): Either<ErrorApp, TeamDetailModel> {
+    suspend operator fun invoke(teamId: Int): Either<ErrorApp, TeamDetailWithRosterModel> {
         return teamDetailRepository.getById(teamId)
     }
 }
