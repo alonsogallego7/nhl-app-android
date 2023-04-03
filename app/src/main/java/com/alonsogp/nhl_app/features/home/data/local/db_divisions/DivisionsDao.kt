@@ -7,7 +7,7 @@ import androidx.room.Query
 
 @Dao
 interface DivisionsDao {
-    @Query("SELECT * FROM divisions WHERE conference_id = :conferenceId")
+    @Query("SELECT * FROM $TABLE_NAME_DIVISIONS WHERE conference_id = :conferenceId")
     fun getDivisionsByConference(conferenceId: Int): List<DivisionEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

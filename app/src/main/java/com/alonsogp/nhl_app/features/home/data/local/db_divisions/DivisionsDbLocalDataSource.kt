@@ -31,7 +31,6 @@ class DivisionsDbLocalDataSource @Inject constructor(private val divisionsDao: D
         return try {
             divisions.forEach {
                 divisionsDao.save(it.toEntity())
-                Log.d("@dev", "Saved division: $it")
             }
             true.right()
         } catch (e: Exception) {

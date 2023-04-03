@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/divisions_fragment">
+    app:startDestination="@id/team_detail_fragment">
 
     <fragment
         android:id="@+id/conferences_fragment"
@@ -19,5 +19,10 @@
         android:id="@+id/teams_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.TeamsFragment"
         tools:layout="@layout/fragment_teams" />
+
+    <fragment
+        android:id="@+id/team_detail_fragment"
+        android:name="com.alonsogp.nhl_app.features.home.presentation.TeamDetailFragment"
+        tools:layout="@layout/fragment_team_detail" />
 
 </navigation>

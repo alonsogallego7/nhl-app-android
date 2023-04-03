@@ -20,12 +20,12 @@ data class TeamModel(
 )
 
 data class TeamDetailModel(
+    val id: Int,
     val name: String,
     val venue: VenueModel,
     val abbreviation: String,
-    val first_year: String,
-    val division: DivisionModel,
-    val roster: RosterModel
+    val firstYearOfPlay: String,
+    val players: List<PlayerModel>
 )
 
 data class VenueModel(
@@ -33,14 +33,11 @@ data class VenueModel(
     val city: String
 )
 
-data class RosterModel(
-    val roster: List<PlayerModel>
-)
-
 data class PlayerModel(
-    val personal_info: PersonModel,
+    val person: PersonModel,
     val jerseyNumber: String,
-    val position: PositionModel
+    val position: PositionModel,
+    val teamId: Int
 )
 
 data class PersonModel(

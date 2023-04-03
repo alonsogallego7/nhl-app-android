@@ -15,7 +15,7 @@ data class TeamListApiModel(
 )
 
 data class TeamDetailListApiModel(
-    @SerializedName("team") val team: List<TeamDetailApiModel>
+    @SerializedName("teams") val team: List<TeamDetailApiModel>
 )
 
 data class ConferenceApiModel(
@@ -37,11 +37,11 @@ data class TeamApiModel(
 )
 
 data class TeamDetailApiModel(
+    @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("venue") val venue: VenueApiModel,
     @SerializedName("abbreviation") val abbreviation: String,
     @SerializedName("firstYearOfPlay") val first_year: String,
-    @SerializedName("division") val division: DivisionApiModel,
     @SerializedName("roster") val roster: RosterApiModel
 )
 
@@ -51,11 +51,11 @@ data class VenueApiModel(
 )
 
 data class RosterApiModel(
-    @SerializedName("roster") val roster: List<PlayerApiModel>
+    @SerializedName("roster") val players: List<PlayerApiModel>
 )
 
 data class PlayerApiModel(
-    @SerializedName("person") val personal_info: PersonApiModel,
+    @SerializedName("person") val person: PersonApiModel,
     @SerializedName("jerseyNumber") val jerseyNumber: String,
     @SerializedName("position") val position: PositionApiModel
 )
