@@ -10,6 +10,6 @@ interface TeamsDao {
     @Query("SELECT * FROM $TABLE_NAME_TEAMS WHERE division_id = :divisionId")
     fun getTeamsByDivision(divisionId: Int): List<TeamEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(teams: List<TeamEntity>)
+    @Insert
+    fun save(team: TeamEntity)
 }

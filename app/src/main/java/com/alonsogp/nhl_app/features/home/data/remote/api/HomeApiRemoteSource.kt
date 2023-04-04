@@ -1,5 +1,6 @@
 package com.alonsogp.nhl_app.features.home.data.remote.api
 
+import android.util.Log
 import com.alonsogp.nhl_app.app.data.remote.apiCall
 import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
@@ -45,9 +46,10 @@ class HomeApiRemoteSource @Inject constructor(private val apiClient: HomeApiEndP
 
     override suspend fun getPlayersByTeam(id: Int): Either<ErrorApp, List<PlayerModel>> {
         return apiCall {
+            Log.d("@dev", "Antes de obtener players")
             apiClient.getPlayersByTeam(id)
         }.map {
-            it.map {
+            it.roster.map {
                 it.toDomain()
             }
         }

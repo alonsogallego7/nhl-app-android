@@ -40,7 +40,7 @@ fun PlayerEntity.toDomain() = PlayerModel(
 )
 
 fun PlayerModel.toEntity(teamId: Int) = PlayerEntity(
-    0,
+    this.person.id,
     this.person.toEntity(),
     this.jerseyNumber,
     this.position.toEntity(),

@@ -27,8 +27,8 @@ class ConferencesDbLocalDataSource @Inject constructor(private val conferencesDa
 
     override suspend fun save(conferences: List<ConferenceModel>): Either<ErrorApp, Boolean> {
         return try {
-            conferences.map {
-                it.toEntity()
+            conferences.forEach{
+                conferencesDao.save(it.toEntity())
             }
             true.right()
         } catch (e: Exception) {

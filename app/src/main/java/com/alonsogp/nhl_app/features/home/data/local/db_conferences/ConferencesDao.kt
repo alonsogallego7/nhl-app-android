@@ -10,6 +10,6 @@ interface ConferencesDao {
     @Query("SELECT * FROM $TABLE_NAME_CONFERENCES")
     fun getAll(): List<ConferenceEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(conferencesEntity: List<ConferenceEntity>)
+    @Insert
+    fun save(conference: ConferenceEntity)
 }

@@ -29,8 +29,9 @@ class TeamsDbLocalDataSource @Inject constructor(private val teamsDao: TeamsDao)
 
     override suspend fun save(teams: List<TeamModel>): Either<ErrorApp, Boolean> {
         return try {
-            teams.map {
-                it.toEntity()
+            teams.forEach {
+
+                teamsDao.save(it.toEntity())
             }
             true.right()
         } catch (e: Exception) {

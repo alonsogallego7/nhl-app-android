@@ -16,6 +16,6 @@ interface TeamDetailDao {
     @Query("SELECT * FROM $TABLE_NAME_PLAYER WHERE team_id = :teamId")
     fun getPlayersById(teamId: Int): List<PlayerEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun savePlayers(players: List<PlayerEntity>)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun savePlayer(player: PlayerEntity)
 }
