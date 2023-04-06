@@ -9,6 +9,8 @@
         <item name="titleCentered">true</item>
     </style>
 
+    <!-- Bottom Navigation Menu -->
+
     <style name="AppBottomMenu" parent="Widget.Material3.BottomNavigationView">
         <item name="backgroundTint">@color/black</item>
         <item name="itemIconTint">@color/white</item>
@@ -18,4 +20,34 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/white_transparent</item>
     </style>
+
+    <style name="FragmentTopText">
+        <item name="android:layout_width">310dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineSpacingExtra">35sp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CardViewText">
+        <item name="android:layout_width">310dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineSpacingExtra">35sp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CardViewDivider" parent="Widget.Material3.MaterialDivider">
+    </style>
+
 </resources>
