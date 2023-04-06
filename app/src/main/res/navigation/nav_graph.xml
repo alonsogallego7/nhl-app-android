@@ -8,17 +8,40 @@
     <fragment
         android:id="@+id/conferences_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.ConferencesFragment"
-        tools:layout="@layout/fragment_conferences" />
+        tools:layout="@layout/fragment_conferences">
+
+        <action
+            android:id="@+id/action_to_divisions_fragment"
+            app:destination="@id/divisions_fragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/divisions_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.DivisionsFragment"
-        tools:layout="@layout/fragment_divisions" />
+        tools:layout="@layout/fragment_divisions">
+
+        <argument
+            android:name="conferenceId"
+            app:argType="integer"
+            app:nullable="false" />
+
+        <action
+            android:id="@+id/action_to_teams_fragment"
+            app:destination="@id/teams_fragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/teams_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.TeamsFragment"
-        tools:layout="@layout/fragment_teams" />
+        tools:layout="@layout/fragment_teams">
+
+        <action
+            android:id="@+id/action_to_team_detail_fragment"
+            app:destination="@id/team_detail_fragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/team_detail_fragment"
