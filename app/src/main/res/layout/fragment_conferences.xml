@@ -50,6 +50,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/cardview1_image"
                     android:layout_width="match_parent"
                     android:layout_height="172dp"
                     android:scaleType="centerCrop"
@@ -102,6 +103,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/cardview2_image"
                     android:layout_width="match_parent"
                     android:layout_height="172dp"
                     android:scaleType="centerCrop"

@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.databinding.FragmentConferencesBinding
+import com.alonsogp.nhl_app.features.home.domain.ConferenceModel
 import com.faltenreich.skeletonlayout.Skeleton
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,11 +46,27 @@ class ConferencesFragment : Fragment() {
                     findNavController().navigateUp()
                 }
             }
+            westernCard.setOnClickListener {
+                navigateToDivisions(5)
+            }
+            easternCard.setOnClickListener {
+                navigateToDivisions(6)
+            }
         }
     }
 
-    private fun bind() {
-        //TODO
+    private fun bind(conference: ConferenceModel) {
+        binding?.apply {
+            if (conference.name == "Western") {
+                cardview1Text.text = conference.name + " Conference"
+            } else {
+                cardview2Text.text = conference.name + " Conference"
+            }
+            layoutToolbar.sectionToolbar.apply {
+                title = "Teams & Players"
+            }
+        }
+
     }
 
     private fun setupObservers() {
@@ -59,7 +76,9 @@ class ConferencesFragment : Fragment() {
                     Log.d("@dev", "Error: $error")
                 } ?: run {
                     uiState.conferences?.let { conferences ->
-                        Log.d("@dev", "Conferences: $conferences")
+                        conferences.map { conference ->
+                            bind(conference)
+                        }
                     }
                 }
             }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.alonsogp.nhl_app.databinding.FragmentDivisionsBinding
 import com.faltenreich.skeletonlayout.Skeleton
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +19,7 @@ class DivisionsFragment: Fragment() {
     private var divisionsFragmentBinding: FragmentDivisionsBinding? = null
     private val viewModel by viewModels<DivisionsViewModel>()
     private var skeleton: Skeleton? = null
+    private val args: DivisionsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +32,7 @@ class DivisionsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
-        viewModel.getDivisions(5)
+        viewModel.getDivisions(args.conferenceId)
     }
 
     private fun setupObservers() {
