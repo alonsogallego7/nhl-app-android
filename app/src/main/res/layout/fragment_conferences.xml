@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/western_card"
+            android:id="@+id/cardview1"
             app:strokeColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,12 +89,12 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/eastern_card"
+            android:id="@+id/cardview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/western_card"
+            app:layout_constraintTop_toBottomOf="@id/cardview1"
             app:strokeColor="@color/black">
 
             <LinearLayout

@@ -21,7 +21,6 @@ class ConferencesFragment : Fragment() {
 
     private var binding: FragmentConferencesBinding? = null
     private val viewModel by viewModels<ConferencesViewModel>()
-    private var skeleton: Skeleton? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,10 +45,10 @@ class ConferencesFragment : Fragment() {
                     findNavController().navigateUp()
                 }
             }
-            westernCard.setOnClickListener {
+            cardview1.setOnClickListener {
                 navigateToDivisions(5)
             }
-            easternCard.setOnClickListener {
+            cardview2.setOnClickListener {
                 navigateToDivisions(6)
             }
         }
@@ -66,7 +65,6 @@ class ConferencesFragment : Fragment() {
                 title = "Teams & Players"
             }
         }
-
     }
 
     private fun setupObservers() {

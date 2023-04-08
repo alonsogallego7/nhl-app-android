@@ -37,6 +37,11 @@
         android:name="com.alonsogp.nhl_app.features.home.presentation.TeamsFragment"
         tools:layout="@layout/fragment_teams">
 
+        <argument
+            android:name="divisionId"
+            app:argType="integer"
+            app:nullable="false" />
+
         <action
             android:id="@+id/action_to_team_detail_fragment"
             app:destination="@id/team_detail_fragment" />
