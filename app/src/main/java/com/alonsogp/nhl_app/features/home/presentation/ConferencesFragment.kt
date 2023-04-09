@@ -10,10 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.databinding.FragmentConferencesBinding
 import com.alonsogp.nhl_app.features.home.domain.ConferenceModel
-import com.faltenreich.skeletonlayout.Skeleton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -32,7 +32,7 @@ class HomeApiRemoteSource @Inject constructor(private val apiClient: HomeApiEndP
         return apiCall {
             apiClient.getTeams()
         }.map {
-            it.teams.map { it.toDomain() }
+            it.teams.map { it.toDomain("https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${it.id}.svg") }
         }
     }
 

@@ -13,11 +13,11 @@ fun DivisionApiModel.toDomain(): DivisionModel = DivisionModel(
     this.conference.id
 )
 
-fun TeamApiModel.toDomain(): TeamModel = TeamModel(
+fun TeamApiModel.toDomain(logoUrl: String): TeamModel = TeamModel(
     this.id,
     this.name,
     this.abbreviation,
-    "https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/3.svg",
+    logoUrl,
     this.division.id
 )
 

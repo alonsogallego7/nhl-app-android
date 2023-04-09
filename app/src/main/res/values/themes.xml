@@ -14,5 +14,10 @@
         <!-- Customize your theme here. -->
         <item name="bottomNavigationStyle">@style/AppBottomMenu</item>
         <item name="toolbarStyle">@style/AppToolbar</item>
+        <item name="android:fontFamily">@font/overpass_mono_bold</item>
+    </style>
+
+    <style name="AppTheme.Secondary" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/overpass_mono_light</item>
     </style>
 </resources>

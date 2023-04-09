@@ -21,7 +21,6 @@ class DivisionsFragment: Fragment() {
     private var binding: FragmentDivisionsBinding? = null
     private val viewModel by viewModels<DivisionsViewModel>()
     private val args: DivisionsFragmentArgs by navArgs()
-    private var divisions: List<DivisionModel>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,18 +45,19 @@ class DivisionsFragment: Fragment() {
                     findNavController().navigateUp()
                 }
             }
-            cardview1.setOnClickListener {
-                divisions?.map { division ->
-                    if (division.name == "Pacific") {
-                        navigateToTeams(15)
-                    } else navigateToTeams(16)
+            if (args.conferenceId == 5) {
+                cardview1.setOnClickListener {
+                    navigateToTeams(15)
                 }
-            }
-            cardview2.setOnClickListener {
-                divisions?.map { division ->
-                    if (division.name == "Atlantic") {
-                        navigateToTeams(17)
-                    } else navigateToTeams(18)
+                cardview2.setOnClickListener {
+                    navigateToTeams(16)
+                }
+            } else {
+                cardview1.setOnClickListener {
+                    navigateToTeams(17)
+                }
+                cardview2.setOnClickListener {
+                    navigateToTeams(18)
                 }
             }
         }
@@ -65,10 +65,10 @@ class DivisionsFragment: Fragment() {
 
     private fun bind(division: DivisionModel) {
         binding?.apply {
-            if (division.name == "Pacific" || division.name == "Central") {
+            if (division.name == "Pacific" || division.name == "Atlantic") {
                 cardview1Text.text = division.name + " Division"
             }
-            if (division.name == "Atlantic" || division.name == "Metropolitan") {
+            if (division.name == "Central" || division.name == "Metropolitan") {
                 cardview2Text.text = division.name + " Division"
             }
             layoutToolbar.sectionToolbar.apply {
