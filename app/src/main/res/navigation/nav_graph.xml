@@ -51,6 +51,13 @@
     <fragment
         android:id="@+id/team_detail_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.TeamDetailFragment"
-        tools:layout="@layout/fragment_team_detail" />
+        tools:layout="@layout/fragment_team_detail">
+
+        <argument
+            android:name="teamId"
+            app:argType="integer"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>
