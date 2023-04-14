@@ -71,9 +71,6 @@ class DivisionsFragment: Fragment() {
             if (division.name == "Central" || division.name == "Metropolitan") {
                 cardview2Text.text = division.name + " Division"
             }
-            layoutToolbar.sectionToolbar.apply {
-                title = "Teams & Players"
-            }
         }
     }
 

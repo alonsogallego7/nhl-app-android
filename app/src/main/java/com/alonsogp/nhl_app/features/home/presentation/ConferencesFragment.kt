@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class ConferencesFragment : Fragment() {
 
     private var binding: FragmentConferencesBinding? = null
-    private val viewModel by viewModels<ConferencesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +30,6 @@ class ConferencesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObservers()
-        viewModel.getConferences()
     }
 
     private fun setupView() {
@@ -50,35 +47,6 @@ class ConferencesFragment : Fragment() {
                 navigateToDivisions(6)
             }
         }
-    }
-
-    private fun bind(conference: ConferenceModel) {
-        binding?.apply {
-            if (conference.name == "Western") {
-                cardview1Text.text = conference.name + " Conference"
-            } else {
-                cardview2Text.text = conference.name + " Conference"
-            }
-            layoutToolbar.sectionToolbar.apply {
-                title = "Teams & Players"
-            }
-        }
-    }
-
-    private fun setupObservers() {
-        val newsFeedSubscriber =
-            Observer<ConferencesViewModel.UiState> { uiState ->
-                uiState.error?.let { error ->
-                    Log.d("@dev", "Error: $error")
-                } ?: run {
-                    uiState.conferences?.let { conferences ->
-                        conferences.map { conference ->
-                            bind(conference)
-                        }
-                    }
-                }
-            }
-        viewModel.uiState.observe(viewLifecycleOwner, newsFeedSubscriber)
     }
 
     private fun navigateToDivisions(conferenceId: Int) {

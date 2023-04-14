@@ -5,6 +5,19 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/conferences_fragment">
 
+    <action
+        android:id="@+id/action_to_conferences_section"
+        app:destination="@id/conferences_fragment" />
+
+    <action
+        android:id="@+id/action_to_standings_section"
+        app:destination="@+id/standings_fragment" />
+
+    <!--
+    <action
+        android:id="@+id/action_to_stats_section"
+        app:destination="@id/stats_fragment" />
+    -->
     <fragment
         android:id="@+id/conferences_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.ConferencesFragment"
@@ -59,5 +72,10 @@
             app:nullable="false" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/standings_fragment"
+        android:name="com.alonsogp.nhl_app.features.standings.presentation.StandingsFragment"
+        tools:layout="@layout/fragment_standings" />
 
 </navigation>

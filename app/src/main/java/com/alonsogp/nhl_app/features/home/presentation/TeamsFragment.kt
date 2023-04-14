@@ -58,7 +58,7 @@ class TeamsFragment: Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-                skeleton = applySkeleton(R.layout.view_item_teams, 10)
+                skeleton = applySkeleton(R.layout.view_item_teams, 6)
             }
             teamsAdapter.setOnClickItem { teamId ->
                 navigateToTeamDetail(teamId)
