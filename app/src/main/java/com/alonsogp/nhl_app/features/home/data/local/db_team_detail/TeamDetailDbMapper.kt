@@ -1,5 +1,6 @@
 package com.alonsogp.nhl_app.features.home.data.local.db_team_detail
 
+import com.alonsogp.nhl_app.features.home.data.remote.api.toDomain
 import com.alonsogp.nhl_app.features.home.domain.*
 
 // TeamDetailEntity
@@ -50,7 +51,8 @@ fun PlayerModel.toEntity(teamId: Int) = PlayerEntity(
 // PersonEntity
 fun PersonEntity.toDomain() = PersonModel(
     this.id,
-    this.fullName
+    this.fullName,
+    "http://nhl.bamcontent.com/images/headshots/current/168x168/${this.id}.jpg"
 )
 
 fun PersonModel.toEntity() = PersonEntity(

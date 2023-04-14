@@ -4,20 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alonsogp.nhl_app.R
-import com.alonsogp.nhl_app.features.home.domain.TeamModel
+import com.alonsogp.nhl_app.features.home.domain.PlayerModel
 
 class PlayersAdapter: RecyclerView.Adapter<PlayersViewHolder>() {
 
-    private val dataItems = mutableListOf<TeamModel>()
+    private val dataItems = mutableListOf<PlayerModel>()
     private var itemClick: ((Int) -> Unit)? = null
 
     fun setOnClickItem(itemClick: (Int) -> Unit) {
         this.itemClick = itemClick
     }
 
-    fun setDataItems(teams: List<TeamModel>) {
+    fun setDataItems(players: List<PlayerModel>) {
         dataItems.clear()
-        dataItems.addAll(teams)
+        dataItems.addAll(players)
         notifyDataSetChanged()
     }
 

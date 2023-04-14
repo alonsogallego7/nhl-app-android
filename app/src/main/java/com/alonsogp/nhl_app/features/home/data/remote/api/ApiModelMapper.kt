@@ -47,7 +47,7 @@ fun PlayerApiModel.toDomain(): PlayerModel = PlayerModel(
 fun PersonApiModel.toDomain(): PersonModel = PersonModel(
     this.id,
     this.fullName,
-    "https://nhl.bamcontent.com/images/headshots/current/168x168/${this.id}.jpg"
+    "http://nhl.bamcontent.com/images/headshots/current/168x168/${this.id}.jpg"
 )
 
 fun PositionApiModel.toDomain(): PositionModel = PositionModel(

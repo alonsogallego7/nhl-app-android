@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true">
+
+        <include
+            android:id="@+id/layout_toolbar"
+            layout="@layout/view_section_toolbar"
+            app:navigationIcon="@drawable/ic_back" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +41,6 @@
             android:layout_width="215dp"
             android:layout_height="215dp"
             android:layout_marginTop="20dp"
-            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/info_text" />
@@ -184,58 +197,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/team_city" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/conference_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/overpass_mono_bold"
-            android:text="Conference"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/foundation_year" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/conference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/overpass_mono_light"
-            android:text="Eastern"
-            android:textAlignment="textEnd"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/foundation_year" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/division_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/overpass_mono_bold"
-            android:text="Division"
-            android:textAlignment="textStart"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/conference" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/division"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/overpass_mono_light"
-            android:text="Metropolitan"
-            android:textAlignment="textEnd"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/conference" />
-
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/second_divider"
             android:layout_width="250dp"
@@ -243,7 +204,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/division_title" />
+            app:layout_constraintTop_toBottomOf="@id/team_city_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/players_title"
@@ -259,5 +220,15 @@
             app:layout_constraintTop_toBottomOf="@id/second_divider" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_players"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/view_item_players" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
