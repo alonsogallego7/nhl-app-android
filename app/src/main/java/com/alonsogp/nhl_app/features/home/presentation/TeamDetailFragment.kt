@@ -1,10 +1,13 @@
 package com.alonsogp.nhl_app.features.home.presentation
 
+import android.graphics.drawable.PictureDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,12 +15,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alonsogp.nhl_app.R
+import com.alonsogp.nhl_app.app.extensions.svg.GlideApp
+import com.alonsogp.nhl_app.app.extensions.svg.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.FragmentTeamDetailBinding
 import com.alonsogp.nhl_app.features.home.domain.DivisionModel
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailModel
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailWithRosterModel
 import com.alonsogp.nhl_app.features.home.presentation.adapter.PlayersAdapter
 import com.alonsogp.nhl_app.features.home.presentation.adapter.TeamsAdapter
+import com.bumptech.glide.RequestBuilder
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +35,8 @@ class TeamDetailFragment: Fragment() {
     private val viewModel by viewModels<TeamDetailViewModel>()
     private val args: TeamDetailFragmentArgs by navArgs()
     private val playersAdapter = PlayersAdapter()
+    private var requestBuilder: RequestBuilder<PictureDrawable>? = null
+    private var imageViewNet: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,6 +74,15 @@ class TeamDetailFragment: Fragment() {
 
     private fun bind(teamDetail: TeamDetailWithRosterModel) {
         binding?.apply {
+
+            imageViewNet = teamLogo
+
+            requestBuilder = GlideApp.with(root.context)
+                .`as`(PictureDrawable::class.java)
+                .listener(SvgSoftwareLayerSetter())
+
+            loadNet("https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${teamDetail.id}.svg")
+
             teamName.text = teamDetail.name
             teamAbbreviation.text = teamDetail.abbreviation
             teamArena.text = teamDetail.venue.name
@@ -87,5 +104,12 @@ class TeamDetailFragment: Fragment() {
                 }
             }
         viewModel.uiState.observe(viewLifecycleOwner, teamSubscriber)
+    }
+
+    private fun loadNet(url: String) {
+        val uri: Uri = Uri.parse(url)
+        if (imageViewNet != null) {
+            requestBuilder?.load(uri)?.into(imageViewNet!!)
+        }
     }
 }

@@ -12,11 +12,6 @@ class PlayersViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
     fun bind(player: PlayerModel, itemClick: ((Int) -> Unit)?) {
         val binding = ViewItemPlayersBinding.bind(view)
 
-        Log.d("@dev", "Antes de load")
-
-        binding.playerImage.loadUrl(player.person.faceUrl)
-
-        Log.d("@dev", "Despues de load")
         binding.playerName.text = player.person.fullName
         binding.playerPosition.text = player.position.type
         binding.playerNumber.text = player.jerseyNumber
