@@ -9,11 +9,6 @@ import com.alonsogp.nhl_app.features.home.domain.PlayerModel
 class PlayersAdapter: RecyclerView.Adapter<PlayersViewHolder>() {
 
     private val dataItems = mutableListOf<PlayerModel>()
-    private var itemClick: ((Int) -> Unit)? = null
-
-    fun setOnClickItem(itemClick: (Int) -> Unit) {
-        this.itemClick = itemClick
-    }
 
     fun setDataItems(players: List<PlayerModel>) {
         dataItems.clear()
@@ -23,12 +18,12 @@ class PlayersAdapter: RecyclerView.Adapter<PlayersViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayersViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_item_teams, parent, false)
+            .inflate(R.layout.view_item_players, parent, false)
         return PlayersViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: PlayersViewHolder, position: Int) {
-        holder.bind(dataItems[position], itemClick)
+        holder.bind(dataItems[position])
     }
 
     override fun getItemCount(): Int = dataItems.size

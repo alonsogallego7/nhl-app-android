@@ -13,7 +13,7 @@ interface TeamDetailDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveTeam(team: TeamDetailEntity)
 
-    @Query("SELECT * FROM $TABLE_NAME_PLAYER WHERE team_id = :teamId")
+    @Query("SELECT * FROM $TABLE_NAME_PLAYER WHERE team_id = :teamId ORDER BY type ASC")
     fun getPlayersById(teamId: Int): List<PlayerEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

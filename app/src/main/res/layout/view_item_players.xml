@@ -10,25 +10,18 @@
     android:layout_marginEnd="20dp"
     android:layout_marginTop="12dp">
 
-    <ImageView
-        android:id="@+id/player_image"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/player_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
         android:fontFamily="@font/overpass_mono_bold"
         tools:text="Jonathan Bernier"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@id/player_image"
-        app:layout_constraintTop_toTopOf="@id/player_image" />
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/player_position"
@@ -39,8 +32,8 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/overpass_mono_light"
         tools:text="Goalie"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@id/player_image"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/player_name" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -53,8 +46,8 @@
         android:fontFamily="@font/overpass_mono_bold"
         tools:text="45"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@id/player_name"
-        app:layout_constraintBottom_toBottomOf="@id/player_image" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="188dp"
@@ -62,6 +55,6 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_image" />
+        app:layout_constraintTop_toBottomOf="@id/player_number" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,8 +51,7 @@ fun PlayerModel.toEntity(teamId: Int) = PlayerEntity(
 // PersonEntity
 fun PersonEntity.toDomain() = PersonModel(
     this.id,
-    this.fullName,
-    "http://nhl.bamcontent.com/images/headshots/current/168x168/${this.id}.jpg"
+    this.fullName
 )
 
 fun PersonModel.toEntity() = PersonEntity(

@@ -54,7 +54,6 @@ data class PlayerModel(
 data class PersonModel(
     val id: Int,
     val fullName: String,
-    val faceUrl: String
 )
 
 data class PositionModel(

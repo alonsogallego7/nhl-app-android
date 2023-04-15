@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,18 +15,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.app.extensions.svg.GlideApp
 import com.alonsogp.nhl_app.app.extensions.svg.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.FragmentTeamDetailBinding
-import com.alonsogp.nhl_app.features.home.domain.DivisionModel
-import com.alonsogp.nhl_app.features.home.domain.TeamDetailModel
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailWithRosterModel
 import com.alonsogp.nhl_app.features.home.presentation.adapter.PlayersAdapter
-import com.alonsogp.nhl_app.features.home.presentation.adapter.TeamsAdapter
 import com.bumptech.glide.RequestBuilder
-import com.faltenreich.skeletonlayout.Skeleton
-import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -83,6 +78,7 @@ class TeamDetailFragment: Fragment() {
 
             loadNet("https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${teamDetail.id}.svg")
 
+            teamTitle.text = teamDetail.name
             teamName.text = teamDetail.name
             teamAbbreviation.text = teamDetail.abbreviation
             teamArena.text = teamDetail.venue.name
@@ -100,6 +96,16 @@ class TeamDetailFragment: Fragment() {
                     uiState.teamDetail?.let { team ->
                         bind(team)
                         playersAdapter.setDataItems(team.roster)
+                        binding?.listPlayers?.viewTreeObserver?.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                            override fun onGlobalLayout() {
+                                val totalHeight = 163 * playersAdapter.itemCount
+                                Log.d("@dev", "$totalHeight")
+                                val layoutParams = binding?.listPlayers?.layoutParams
+                                layoutParams?.height = totalHeight
+                                binding?.listPlayers?.layoutParams = layoutParams
+                                binding?.listPlayers?.viewTreeObserver?.removeOnGlobalLayoutListener(this)
+                            }
+                        })
                     }
                 }
             }
