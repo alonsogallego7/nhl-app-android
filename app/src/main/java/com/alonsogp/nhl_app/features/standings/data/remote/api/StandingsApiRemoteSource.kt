@@ -12,11 +12,9 @@ class StandingsApiRemoteSource @Inject constructor(private val apiClient: Standi
     StandingsRemoteDataSource {
     override suspend fun getStandingsByType(type: String): Either<ErrorApp, List<RecordModel>> {
         return apiCall {
-            Log.d("@dev", "Punto 1")
             apiClient.getStandingsByType(type)
         }.map {
             it.records.map {
-                Log.d("@dev", "$it")
                 it.toDomain()
             }
         }

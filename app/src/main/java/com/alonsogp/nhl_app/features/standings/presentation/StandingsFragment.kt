@@ -33,7 +33,7 @@ class StandingsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
-        viewModel.getStandings(args.typeId)
+        viewModel.getStandings(args.typeId, args.conferenceId)
     }
 
     private fun setupObservers() {

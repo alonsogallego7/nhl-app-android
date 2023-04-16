@@ -11,7 +11,7 @@ class StandingsDataRepository @Inject constructor(
     private val remoteDataSource: StandingsRemoteDataSource
 ) : StandingsRepository {
 
-    override suspend fun getByType(type: String): Either<ErrorApp, List<RecordModel>> {
+    override suspend fun getByType(type: String, conferenceId: Int?): Either<ErrorApp, List<RecordModel>> {
         return remoteDataSource.getStandingsByType(type)
     }
 }

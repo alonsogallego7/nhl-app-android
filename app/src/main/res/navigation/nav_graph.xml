@@ -82,6 +82,10 @@
             android:id="@+id/action_to_standings_fragment"
             app:destination="@id/standings_fragment" />
 
+        <action
+            android:id="@+id/action_to_standings_conference_fragment"
+            app:destination="@id/standings_conference_fragment"/>
+
     </fragment>
 
     <fragment
@@ -93,6 +97,22 @@
             android:name="typeId"
             app:argType="integer"
             app:nullable="false" />
+
+        <argument
+            android:name="conferenceId"
+            app:argType="integer"
+            app:nullable="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/standings_conference_fragment"
+        android:name="com.alonsogp.nhl_app.features.standings.presentation.StandingsConferencesFragment"
+        tools:layout="@layout/fragment_conferences">
+
+        <action
+            android:id="@+id/action_to_standings_fragment"
+            app:destination="@id/standings_fragment" />
 
     </fragment>
 

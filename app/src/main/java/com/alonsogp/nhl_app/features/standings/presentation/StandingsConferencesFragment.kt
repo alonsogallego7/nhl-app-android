@@ -7,19 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.alonsogp.nhl_app.databinding.FragmentStandingTypesBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.alonsogp.nhl_app.databinding.FragmentConferencesBinding
+import com.alonsogp.nhl_app.features.home.presentation.ConferencesFragmentDirections
 
-@AndroidEntryPoint
-class StandingsTypesFragment : Fragment() {
+class StandingsConferencesFragment : Fragment() {
 
-    private var binding: FragmentStandingTypesBinding? = null
+    private var binding: FragmentConferencesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentStandingTypesBinding.inflate(inflater)
+        binding = FragmentConferencesBinding.inflate(inflater)
         setupView()
         return binding?.root
     }
@@ -37,26 +36,17 @@ class StandingsTypesFragment : Fragment() {
                 }
             }
             cardview1.setOnClickListener {
-                navigateToConferences()
+                navigateToStandings(5)
             }
             cardview2.setOnClickListener {
-                navigateToStandings(2)
-            }
-            cardview3.setOnClickListener {
-                navigateToStandings(3)
+                navigateToStandings(6)
             }
         }
     }
 
-    private fun navigateToConferences() {
+    private fun navigateToStandings(conferenceId: Int) {
         findNavController().navigate(
-            StandingsTypesFragmentDirections.actionToStandingsConferenceFragment()
-        )
-    }
-
-    private fun navigateToStandings(typeId: Int) {
-        findNavController().navigate(
-            StandingsTypesFragmentDirections.actionToStandingsFragment(typeId, 0)
+            StandingsConferencesFragmentDirections.actionToStandingsFragment(1, conferenceId)
         )
     }
 }
