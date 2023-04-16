@@ -4,7 +4,6 @@ import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
 import com.alonsogp.nhl_app.features.home.data.local.ConferencesLocalDataSource
 import com.alonsogp.nhl_app.features.home.data.remote.HomeRemoteDataSource
-import com.alonsogp.nhl_app.features.home.data.remote.api.HomeApiRemoteSource
 import com.alonsogp.nhl_app.features.home.domain.ConferenceModel
 import com.alonsogp.nhl_app.features.home.domain.ConferencesRepository
 import javax.inject.Inject
