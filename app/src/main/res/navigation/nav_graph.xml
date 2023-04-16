@@ -10,8 +10,8 @@
         app:destination="@id/conferences_fragment" />
 
     <action
-        android:id="@+id/action_to_standings_section"
-        app:destination="@+id/standings_fragment" />
+        android:id="@+id/action_to_standings_types_section"
+        app:destination="@+id/standings_types_fragment" />
 
     <!--
     <action
@@ -74,8 +74,26 @@
     </fragment>
 
     <fragment
+        android:id="@+id/standings_types_fragment"
+        android:name="com.alonsogp.nhl_app.features.standings.presentation.StandingsTypesFragment"
+        tools:layout="@layout/fragment_standing_types">
+
+        <action
+            android:id="@+id/action_to_standings_fragment"
+            app:destination="@id/standings_fragment" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/standings_fragment"
         android:name="com.alonsogp.nhl_app.features.standings.presentation.StandingsFragment"
-        tools:layout="@layout/fragment_standings" />
+        tools:layout="@layout/fragment_standings">
+
+        <argument
+            android:name="typeId"
+            app:argType="integer"
+            app:nullable="false" />
+
+    </fragment>
 
 </navigation>

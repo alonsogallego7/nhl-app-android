@@ -38,7 +38,7 @@ class MainActivity: AppCompatActivity() {
                     true
                 }
                 R.id.standings_button -> {
-                    navigateToStandingsFragment()
+                    navigateToStandingTypesFragment()
                     true
                 }
                 else -> false
@@ -52,9 +52,9 @@ class MainActivity: AppCompatActivity() {
         )
     }
 
-    private fun navigateToStandingsFragment() {
+    private fun navigateToStandingTypesFragment() {
         findNavController(R.id.nav_host_fragment).navigate(
-            NavGraphDirections.actionToStandingsSection()
+            NavGraphDirections.actionToStandingsTypesSection()
         )
     }
 }

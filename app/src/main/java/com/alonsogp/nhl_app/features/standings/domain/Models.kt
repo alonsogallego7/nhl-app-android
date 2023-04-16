@@ -3,12 +3,12 @@ package com.alonsogp.nhl_app.features.standings.domain
 import com.alonsogp.nhl_app.features.home.domain.ConferenceModel
 
 data class RecordModel(
-    val team: TeamModel,
     val conference: ConferenceModel?,
     val teamRecords: List<TeamRecordsModel>
 )
 
 data class TeamRecordsModel(
+    val team: TeamModel,
     val leagueRecord: LeagueRecordModel,
     val points: Int,
 )

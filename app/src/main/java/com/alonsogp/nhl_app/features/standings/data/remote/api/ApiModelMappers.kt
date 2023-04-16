@@ -7,12 +7,12 @@ import com.alonsogp.nhl_app.features.standings.domain.TeamModel
 import com.alonsogp.nhl_app.features.standings.domain.TeamRecordsModel
 
 fun RecordApiModel.toDomain(): RecordModel = RecordModel(
-    this.team.toDomain(),
     this.conference?.toDomain(),
     this.teamRecords.map { it.toDomain() }
 )
 
 fun TeamRecordsApiModel.toDomain(): TeamRecordsModel = TeamRecordsModel(
+    this.team.toDomain(),
     this.leagueRecord.toDomain(),
     this.points
 )
@@ -24,6 +24,6 @@ fun LeagueRecordApiModel.toDomain(): LeagueRecordModel = LeagueRecordModel(
 )
 
 fun TeamApiModel.toDomain(): TeamModel = TeamModel(
-    id,
-    name
+    this.id,
+    this.name
 )

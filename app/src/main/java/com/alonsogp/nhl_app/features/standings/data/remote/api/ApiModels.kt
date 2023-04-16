@@ -7,14 +7,14 @@ data class StandingsResponseApiModel(
 )
 
 data class RecordApiModel(
-    val team: TeamApiModel,
     val conference: ConferenceApiModel?,
     val teamRecords: List<TeamRecordsApiModel>
 )
 
 data class TeamRecordsApiModel(
+    val team: TeamApiModel,
     val leagueRecord: LeagueRecordApiModel,
-    val points: Int,
+    val points: Int
 )
 
 data class LeagueRecordApiModel(
