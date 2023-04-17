@@ -19,12 +19,12 @@ class StandingsViewModel @Inject constructor(
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
-    fun getStandings(typeId: Int, conferenceId: Int?) {
+    fun getStandings(typeId: Int) {
         _uiState.value = UiState(isLoading = true)
 
         if (typeId == 1) {
             viewModelScope.launch(Dispatchers.IO) {
-                getStandingsUseCase.invoke("byConference", conferenceId).fold({
+                getStandingsUseCase.invoke("byConference").fold({
                     errorResponse(it)
                 },{
                     successResponse(it)
@@ -32,7 +32,7 @@ class StandingsViewModel @Inject constructor(
             }
         } else if (typeId == 2) {
             viewModelScope.launch(Dispatchers.IO) {
-                getStandingsUseCase.invoke("byLeague", null).fold({
+                getStandingsUseCase.invoke("wildCard").fold({
                     errorResponse(it)
                 },{
                     successResponse(it)
@@ -40,7 +40,7 @@ class StandingsViewModel @Inject constructor(
             }
         } else {
             viewModelScope.launch(Dispatchers.IO) {
-                getStandingsUseCase.invoke("wildCard", null).fold({
+                getStandingsUseCase.invoke("byLeague").fold({
                     errorResponse(it)
                 },{
                     successResponse(it)

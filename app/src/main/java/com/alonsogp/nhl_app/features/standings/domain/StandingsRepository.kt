@@ -4,5 +4,5 @@ import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
 
 interface StandingsRepository {
-    suspend fun getByType(type: String, conferenceId: Int?): Either<ErrorApp, List<RecordModel>>
+    suspend fun getByType(type: String): Either<ErrorApp, List<RecordModel>>
 }

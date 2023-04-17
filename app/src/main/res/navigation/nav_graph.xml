@@ -110,6 +110,11 @@
         android:name="com.alonsogp.nhl_app.features.standings.presentation.StandingsConferencesFragment"
         tools:layout="@layout/fragment_conferences">
 
+        <argument
+            android:name="typeId"
+            app:argType="integer"
+            app:nullable="false" />
+
         <action
             android:id="@+id/action_to_standings_fragment"
             app:destination="@id/standings_fragment" />

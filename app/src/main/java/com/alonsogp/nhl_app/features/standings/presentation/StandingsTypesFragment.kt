@@ -37,10 +37,10 @@ class StandingsTypesFragment : Fragment() {
                 }
             }
             cardview1.setOnClickListener {
-                navigateToConferences()
+                navigateToConferences(1)
             }
             cardview2.setOnClickListener {
-                navigateToStandings(2)
+                navigateToConferences(2)
             }
             cardview3.setOnClickListener {
                 navigateToStandings(3)
@@ -48,9 +48,9 @@ class StandingsTypesFragment : Fragment() {
         }
     }
 
-    private fun navigateToConferences() {
+    private fun navigateToConferences(typeId: Int) {
         findNavController().navigate(
-            StandingsTypesFragmentDirections.actionToStandingsConferenceFragment()
+            StandingsTypesFragmentDirections.actionToStandingsConferenceFragment(typeId)
         )
     }
 

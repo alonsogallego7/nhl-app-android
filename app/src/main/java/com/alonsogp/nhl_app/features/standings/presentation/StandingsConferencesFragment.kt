@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.alonsogp.nhl_app.databinding.FragmentConferencesBinding
-import com.alonsogp.nhl_app.features.home.presentation.ConferencesFragmentDirections
 
 class StandingsConferencesFragment : Fragment() {
 
     private var binding: FragmentConferencesBinding? = null
+    private val args: StandingsConferencesFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,17 +37,17 @@ class StandingsConferencesFragment : Fragment() {
                 }
             }
             cardview1.setOnClickListener {
-                navigateToStandings(5)
+                navigateToStandings(args.typeId, 5)
             }
             cardview2.setOnClickListener {
-                navigateToStandings(6)
+                navigateToStandings(args.typeId, 6)
             }
         }
     }
 
-    private fun navigateToStandings(conferenceId: Int) {
+    private fun navigateToStandings(typeId: Int, conferenceId: Int) {
         findNavController().navigate(
-            StandingsConferencesFragmentDirections.actionToStandingsFragment(1, conferenceId)
+            StandingsConferencesFragmentDirections.actionToStandingsFragment(typeId, conferenceId)
         )
     }
 }

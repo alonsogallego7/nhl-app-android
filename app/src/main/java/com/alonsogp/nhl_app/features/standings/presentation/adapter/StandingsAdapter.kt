@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alonsogp.nhl_app.R
-import com.alonsogp.nhl_app.features.standings.domain.RecordModel
+import com.alonsogp.nhl_app.features.standings.domain.TeamRecordsModel
 
 class StandingsAdapter : RecyclerView.Adapter<StandingsViewHolder>() {
 
-    private val dataItems = mutableListOf<RecordModel>()
+    private val dataItems = mutableListOf<TeamRecordsModel>()
 
-    fun setDataItems(records: List<RecordModel>) {
+    fun setDataItems(records: List<TeamRecordsModel>) {
         dataItems.clear()
         dataItems.addAll(records)
         notifyDataSetChanged()
@@ -23,7 +23,7 @@ class StandingsAdapter : RecyclerView.Adapter<StandingsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: StandingsViewHolder, position: Int) {
-        holder.bind(dataItems[position])
+        holder.bind(dataItems[position], position)
     }
 
     override fun getItemCount(): Int = dataItems.size
