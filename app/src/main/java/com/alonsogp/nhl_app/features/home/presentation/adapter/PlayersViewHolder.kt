@@ -14,6 +14,7 @@ class PlayersViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
     fun bind(player: PlayerModel) {
         val binding = ViewItemPlayersBinding.bind(view)
 
+        binding.playerImage.loadUrl("https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${player.person.id}@2x.jpg")
         binding.playerName.text = player.person.fullName
         binding.playerPosition.text = player.position.type
         binding.playerNumber.text = player.jerseyNumber
