@@ -3,6 +3,7 @@
     <style name="AppToolbar" parent="Widget.Material3.Toolbar">
         <item name="titleTextColor">@color/white</item>
         <item name="android:background">@color/black</item>
+        <item name="navigationIconTint">@color/white</item>
     </style>
 
     <style name="SectionToolbar" parent="AppToolbar">

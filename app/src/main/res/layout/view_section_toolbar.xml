@@ -4,5 +4,6 @@
     android:id="@+id/section_toolbar"
     style="@style/SectionToolbar"
     android:layout_width="match_parent"
-    android:layout_height="69dp"
-    android:elevation="0dp" />
+    android:layout_height="wrap_content"
+    android:elevation="0dp"
+    app:layout_scrollFlags="scroll|enterAlways|snap"/>

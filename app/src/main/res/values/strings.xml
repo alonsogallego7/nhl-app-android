@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">nhl-app</string>
+
+    <string name="teams_toolbar_title">Teams &amp; Players</string>
 </resources>
