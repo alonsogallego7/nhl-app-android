@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,6 +19,11 @@ import com.alonsogp.nhl_app.features.home.presentation.adapter.TeamsAdapter
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TeamsFragment: Fragment() {
@@ -47,9 +53,6 @@ class TeamsFragment: Fragment() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
                 title = "Teams & Players"
-                setNavigationOnClickListener {
-                    findNavController().navigateUp()
-                }
             }
             listTeams.apply {
                 adapter = teamsAdapter

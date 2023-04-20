@@ -98,8 +98,7 @@ class TeamDetailFragment: Fragment() {
                         playersAdapter.setDataItems(team.roster)
                         binding?.listPlayers?.viewTreeObserver?.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
                             override fun onGlobalLayout() {
-                                val totalHeight = 226 * playersAdapter.itemCount
-                                Log.d("@dev", "$totalHeight")
+                                val totalHeight = 243 * playersAdapter.itemCount
                                 val layoutParams = binding?.listPlayers?.layoutParams
                                 layoutParams?.height = totalHeight
                                 binding?.listPlayers?.layoutParams = layoutParams
