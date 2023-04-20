@@ -6,13 +6,13 @@ import retrofit2.http.Path
 
 interface HomeApiEndPoints {
     @GET("conferences.json")
-    suspend fun getConferences() : Response<ConferenceListApiModel>
+    suspend fun getConferences(): Response<ConferenceListApiModel>
 
     @GET("divisions.json")
-    suspend fun getDivisions() : Response<DivisionListApiModel>
+    suspend fun getDivisions(): Response<DivisionListApiModel>
 
     @GET("teams.json")
-    suspend fun getTeams() : Response<TeamListApiModel>
+    suspend fun getTeams(): Response<TeamListApiModel>
 
     @GET("teams/{id}?expand=team.roster.json")
     suspend fun getTeamById(@Path("id") id: Int): Response<TeamDetailListApiModel>
