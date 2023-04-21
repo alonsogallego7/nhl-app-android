@@ -19,7 +19,8 @@ data class PlayerApiModel(
 )
 
 data class PersonApiModel(
-    val id: Int
+    val id: Int,
+    val fullName: String
 )
 
 data class PlayerStatsResponseApiModel(

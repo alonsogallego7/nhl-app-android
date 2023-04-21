@@ -24,7 +24,7 @@ class TeamDetailDataRepository @Inject constructor(
         val teamWithRoasterLocal = localDataSource.getById(teamId)
 
         if (teamWithRoasterLocal.isLeft() || teamWithRoasterLocal == null) {
-            return remoteDataSource.getTeamById(teamId).flatMap { remoteTeamDetail ->
+            remoteDataSource.getTeamById(teamId).flatMap { remoteTeamDetail ->
                 remoteDataSource.getPlayersByTeam(teamId).map { remotePlayerList ->
                     val teamDetailWithRoster = TeamDetailWithRosterModel(
                         remoteTeamDetail.id,
