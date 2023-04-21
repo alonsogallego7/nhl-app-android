@@ -8,37 +8,32 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.alonsogp.nhl_app.databinding.FragmentDivisionsBinding
-import com.alonsogp.nhl_app.features.home.domain.DivisionModel
-import com.alonsogp.nhl_app.features.home.presentation.DivisionsFragmentArgs
+import com.alonsogp.nhl_app.databinding.FragmentStatsBinding
 import com.alonsogp.nhl_app.features.home.presentation.DivisionsFragmentDirections
-import com.alonsogp.nhl_app.features.home.presentation.DivisionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class StatsFragment: Fragment() {
 
-    private var binding: FragmentDivisionsBinding? = null
+    private var binding: FragmentStatsBinding? = null
     private val viewModel by viewModels<StatsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDivisionsBinding.inflate(inflater)
-        setupView()
+        binding = FragmentStatsBinding.inflate(inflater)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
+        viewModel.getStats()
     }
 
-    private fun setupView() {
+    /*private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
                 title = "Stats"
@@ -47,7 +42,7 @@ class StatsFragment: Fragment() {
                 }
             }
         }
-    }
+    }*/
 
     private fun setupObservers() {
         val newsFeedSubscriber =
@@ -55,9 +50,9 @@ class StatsFragment: Fragment() {
                 uiState.error?.let { error ->
                     Log.d("@dev", "Error: $error")
                 } ?: run {
-                    uiState.divisions?.let { divisions ->
-                        divisions.map { division ->
-                            bind(division)
+                    uiState.playersWithStats?.let { playersWithStats ->
+                        playersWithStats.map { playerWithStats ->
+                            Log.d("@dev", "Player: $playerWithStats")
                         }
                     }
                 }

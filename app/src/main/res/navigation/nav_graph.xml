@@ -13,11 +13,10 @@
         android:id="@+id/action_to_standings_types_section"
         app:destination="@+id/standings_types_fragment" />
 
-    <!--
     <action
-        android:id="@+id/action_to_stats_section"
+        android:id="@+id/action_to_stats_types_section"
         app:destination="@id/stats_fragment" />
-    -->
+
     <fragment
         android:id="@+id/conferences_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.ConferencesFragment"
@@ -84,7 +83,7 @@
 
         <action
             android:id="@+id/action_to_standings_conference_fragment"
-            app:destination="@id/standings_conference_fragment"/>
+            app:destination="@id/standings_conference_fragment" />
 
     </fragment>
 
@@ -120,5 +119,10 @@
             app:destination="@id/standings_fragment" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/stats_fragment"
+        android:name="com.alonsogp.nhl_app.features.stats.presentation.StatsFragment"
+        tools:layout="@layout/fragment_stats" />
 
 </navigation>

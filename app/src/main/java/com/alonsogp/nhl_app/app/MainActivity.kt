@@ -41,6 +41,10 @@ class MainActivity: AppCompatActivity() {
                     navigateToStandingTypesFragment()
                     true
                 }
+                R.id.stats_button -> {
+                    navigateToStatsTypesFragment()
+                    true
+                }
                 else -> false
             }
         }
@@ -55,6 +59,12 @@ class MainActivity: AppCompatActivity() {
     private fun navigateToStandingTypesFragment() {
         findNavController(R.id.nav_host_fragment).navigate(
             NavGraphDirections.actionToStandingsTypesSection()
+        )
+    }
+
+    private fun navigateToStatsTypesFragment() {
+        findNavController(R.id.nav_host_fragment).navigate(
+            NavGraphDirections.actionToStatsTypesSection()
         )
     }
 }

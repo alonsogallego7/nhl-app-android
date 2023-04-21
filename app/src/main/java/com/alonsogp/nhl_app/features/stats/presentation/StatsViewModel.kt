@@ -39,18 +39,18 @@ class StatsViewModel @Inject constructor(
         )
     }
 
-    private fun successResponse(playerWithStats: List<PlayerWithStats>?) {
+    private fun successResponse(playersWithStats: List<PlayerWithStats>?) {
         _uiState.postValue(
             UiState(
                 isLoading = false,
-                playerWithStats = playerWithStats
+                playersWithStats = playersWithStats
             )
         )
     }
 
     data class UiState(
         val isLoading: Boolean = true,
-        val playerWithStats: List<PlayerWithStats>? = null,
+        val playersWithStats: List<PlayerWithStats>? = null,
         val error: ErrorApp? = null
     )
 }

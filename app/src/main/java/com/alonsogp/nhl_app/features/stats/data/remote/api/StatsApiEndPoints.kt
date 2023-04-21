@@ -6,9 +6,9 @@ import retrofit2.http.Path
 
 interface StatsApiEndPoints {
 
-    @GET("teams?expand=team.roster.json")
+    @GET("teams?expand=team.roster")
     suspend fun getPlayers(): Response<PlayersResponseApiModel>
 
-    @GET("people/{id}/stats?stats=statsSingleSeason.json")
+    @GET("people/{id}/stats?stats=statsSingleSeason")
     suspend fun getStatsByPlayer(@Path("id") id: Int): Response<PlayerStatsResponseApiModel>
 }
