@@ -5,7 +5,6 @@ import com.alonsogp.nhl_app.app.domain.functional.Either
 import com.alonsogp.nhl_app.app.domain.functional.left
 import com.alonsogp.nhl_app.app.domain.functional.right
 import com.alonsogp.nhl_app.features.home.data.local.TeamsLocalDataSource
-import com.alonsogp.nhl_app.features.home.data.local.db_divisions.toEntity
 import com.alonsogp.nhl_app.features.home.domain.TeamModel
 import javax.inject.Inject
 
@@ -30,7 +29,6 @@ class TeamsDbLocalDataSource @Inject constructor(private val teamsDao: TeamsDao)
     override suspend fun save(teams: List<TeamModel>): Either<ErrorApp, Boolean> {
         return try {
             teams.forEach {
-
                 teamsDao.save(it.toEntity())
             }
             true.right()

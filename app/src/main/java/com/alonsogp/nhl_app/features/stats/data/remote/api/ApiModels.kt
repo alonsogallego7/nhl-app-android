@@ -1,42 +1,25 @@
 package com.alonsogp.nhl_app.features.stats.data.remote.api
 
-data class PlayersResponseApiModel(
+data class TeamsResponseApiModel(
     val teams: List<TeamApiModel>
 )
 
 data class TeamApiModel(
     val id: Int,
     val name: String,
-    val roster: RosterApiModel
+    val teamStats: List<StatsApiModel>
 )
 
-data class RosterApiModel(
-    val roster: List<PlayerApiModel>
+data class StatsApiModel(
+    val splits: List<SplitsApiModel>
 )
 
-data class PlayerApiModel(
-    val person: PersonApiModel
+data class SplitsApiModel(
+    val stat: StatApiModel
 )
 
-data class PersonApiModel(
-    val id: Int,
-    val fullName: String
-)
-
-data class PlayerStatsResponseApiModel(
-    val stats: List<StatsResponseApiModel>
-)
-
-data class StatsResponseApiModel(
-    val splits: List<SplitsResponseApiModel>
-)
-
-data class SplitsResponseApiModel(
-    val stat: PlayerStatsApiModel
-)
-
-data class PlayerStatsApiModel(
-    val goals: Int,
-    val assists: Int,
-    val points: Int
+data class StatApiModel(
+    val goalsPerGame: Float,
+    val shotsPerGame: Float,
+    val shootingPctg: Float
 )

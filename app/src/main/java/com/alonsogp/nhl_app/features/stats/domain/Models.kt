@@ -1,36 +1,16 @@
 package com.alonsogp.nhl_app.features.stats.domain
 
-data class TeamModel(
+data class TeamStatsModel(
     val id: Int,
     val name: String,
-    val roster: RosterModel
+    val goalsPerGame: Float,
+    val shotsPerGame: Float,
+    val shootingPctg: Float
 )
 
-data class RosterModel(
-    val roster: List<PlayerModel>
-)
-
-data class PlayerModel(
-    val person: PersonModel,
-)
-
-data class PersonModel(
+data class TeamOneStatModel(
     val id: Int,
-    val fullName: String
+    val name: String,
+    val stat: Float
 )
 
-data class PlayerStatsModel(
-    val goals: Int,
-    val assists: Int,
-    val points: Int
-)
-
-data class PlayerWithStats(
-    val playerId: Int,
-    val playerName: String,
-    val teamId: Int,
-    val teamName: String,
-    val goals: Int,
-    val assists: Int,
-    val points: Int
-)
