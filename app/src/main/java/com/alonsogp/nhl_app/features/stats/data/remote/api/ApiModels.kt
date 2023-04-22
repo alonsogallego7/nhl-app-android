@@ -19,7 +19,7 @@ data class SplitsApiModel(
 )
 
 data class StatApiModel(
-    val goalsPerGame: Float,
-    val shotsPerGame: Float,
-    val shootingPctg: Float
+    val goalsPerGame: String,
+    val shotsPerGame: String,
+    val shootingPctg: String
 )

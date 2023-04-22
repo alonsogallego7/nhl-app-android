@@ -18,28 +18,28 @@ import javax.inject.Singleton
 object HomeProvidesModule {
     @Singleton
     @Provides
-    fun providesTeamsApiEndPoints(retrofit: Retrofit) : HomeApiEndPoints =
+    fun providesTeamsApiEndPoints(retrofit: Retrofit): HomeApiEndPoints =
         retrofit.create(HomeApiEndPoints::class.java)
 
 
     @Provides
     @Singleton
-    fun provideConferencesDao(appDatabase: AppDatabase) : ConferencesDao =
+    fun provideConferencesDao(appDatabase: AppDatabase): ConferencesDao =
         appDatabase.conferencesDao()
 
     @Provides
     @Singleton
-    fun provideDivisionsDao(appDatabase: AppDatabase) : DivisionsDao =
+    fun provideDivisionsDao(appDatabase: AppDatabase): DivisionsDao =
         appDatabase.divisionsDao()
 
     @Provides
     @Singleton
-    fun provideTeamsDao(appDatabase: AppDatabase) : TeamsDao =
+    fun provideTeamsDao(appDatabase: AppDatabase): TeamsDao =
         appDatabase.teamsDao()
 
     @Provides
     @Singleton
-    fun provideTeamsDetailDao(appDatabase: AppDatabase) : TeamDetailDao =
+    fun provideTeamsDetailDao(appDatabase: AppDatabase): TeamDetailDao =
         appDatabase.teamDetailDao()
 
 }

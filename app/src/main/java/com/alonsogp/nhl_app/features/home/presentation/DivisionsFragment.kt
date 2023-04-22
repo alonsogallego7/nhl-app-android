@@ -84,6 +84,7 @@ class DivisionsFragment: Fragment() {
                 } ?: run {
                     uiState.divisions?.let { divisions ->
                         divisions.map { division ->
+                            Log.d("@dev", "Division: $division")
                             bind(division)
                         }
                     }

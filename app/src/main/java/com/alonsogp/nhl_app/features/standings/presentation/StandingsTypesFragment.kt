@@ -5,21 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.alonsogp.nhl_app.databinding.FragmentStandingTypesBinding
+import com.alonsogp.nhl_app.databinding.FragmentStandingsTypesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class StandingsTypesFragment : Fragment() {
 
-    private var binding: FragmentStandingTypesBinding? = null
+    private var binding: FragmentStandingsTypesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentStandingTypesBinding.inflate(inflater)
+        binding = FragmentStandingsTypesBinding.inflate(inflater)
         setupView()
         return binding?.root
     }

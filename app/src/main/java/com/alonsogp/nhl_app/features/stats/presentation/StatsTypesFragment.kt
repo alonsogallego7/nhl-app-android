@@ -7,30 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.alonsogp.nhl_app.databinding.FragmentStatsBinding
+import com.alonsogp.nhl_app.databinding.FragmentStatsTypesBinding
+import com.alonsogp.nhl_app.features.home.presentation.DivisionsFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StatsFragment: Fragment() {
+class StatsTypesFragment : Fragment() {
 
-    private var binding: FragmentStatsBinding? = null
-    private val viewModel by viewModels<StatsViewModel>()
+    private var binding: FragmentStatsTypesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentStatsBinding.inflate(inflater)
+        binding = FragmentStatsTypesBinding.inflate(inflater)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObservers()
     }
 
-    /*private fun setupView() {
+    private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
                 title = "Stats"
@@ -39,21 +39,9 @@ class StatsFragment: Fragment() {
                 }
             }
         }
-    }*/
+    }
 
-    private fun setupObservers() {
-        val newsFeedSubscriber =
-            Observer<StatsViewModel.UiState> { uiState ->
-                uiState.error?.let { error ->
-                    Log.d("@dev", "Error: $error")
-                } ?: run {
-                    uiState.teams?.let { teams ->
-                        teams.map {
-                            Log.d("@dev", "Team: $it")
-                        }
-                    }
-                }
-            }
-        viewModel.uiState.observe(viewLifecycleOwner, newsFeedSubscriber)
+    private fun navigateToStats(typeId: Int) {
+
     }
 }

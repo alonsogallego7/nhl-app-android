@@ -75,7 +75,7 @@
     <fragment
         android:id="@+id/standings_types_fragment"
         android:name="com.alonsogp.nhl_app.features.standings.presentation.StandingsTypesFragment"
-        tools:layout="@layout/fragment_standing_types">
+        tools:layout="@layout/fragment_standings_types">
 
         <action
             android:id="@+id/action_to_standings_fragment"

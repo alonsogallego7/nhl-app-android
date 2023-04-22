@@ -4,13 +4,11 @@ import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
 import com.alonsogp.nhl_app.app.domain.functional.left
 import com.alonsogp.nhl_app.app.domain.functional.right
-import com.alonsogp.nhl_app.features.home.data.local.db_teams.toDomain
-import com.alonsogp.nhl_app.features.home.data.local.db_teams.toEntity
-import com.alonsogp.nhl_app.features.home.domain.TeamModel
 import com.alonsogp.nhl_app.features.stats.data.local.StatsLocalDataSource
 import com.alonsogp.nhl_app.features.stats.domain.TeamOneStatModel
 import com.alonsogp.nhl_app.features.stats.domain.TeamStatsModel
 import javax.inject.Inject
+
 
 class StatsDbLocalDataSource @Inject constructor(private val statsDao: StatsDao) :
     StatsLocalDataSource {
@@ -21,7 +19,9 @@ class StatsDbLocalDataSource @Inject constructor(private val statsDao: StatsDao)
             if (teams.isEmpty()) {
                 emptyList<TeamOneStatModel>().right()
             } else {
-                teams.right()
+                teams.map {
+                    it.toDomain()
+                }.right()
             }
         } catch (e: Exception) {
             ErrorApp.DataError.left()
@@ -35,7 +35,9 @@ class StatsDbLocalDataSource @Inject constructor(private val statsDao: StatsDao)
             if (teams.isEmpty()) {
                 emptyList<TeamOneStatModel>().right()
             } else {
-                teams.right()
+                teams.map {
+                    it.toDomain()
+                }.right()
             }
         } catch (e: Exception) {
             ErrorApp.DataError.left()
@@ -49,7 +51,9 @@ class StatsDbLocalDataSource @Inject constructor(private val statsDao: StatsDao)
             if (teams.isEmpty()) {
                 emptyList<TeamOneStatModel>().right()
             } else {
-                teams.right()
+                teams.map {
+                    it.toDomain()
+                }.right()
             }
         } catch (e: Exception) {
             ErrorApp.DataError.left()

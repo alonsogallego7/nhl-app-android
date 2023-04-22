@@ -30,6 +30,7 @@ class DivisionsDbLocalDataSource @Inject constructor(private val divisionsDao: D
     override suspend fun save(divisions: List<DivisionModel>): Either<ErrorApp, Boolean> {
         return try {
             divisions.forEach {
+                Log.d("@dev", "$it")
                 divisionsDao.save(it.toEntity())
             }
             true.right()
