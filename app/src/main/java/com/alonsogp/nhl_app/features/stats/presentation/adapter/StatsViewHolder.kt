@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsogp.nhl_app.app.extensions.svg.GlideApp
-import com.alonsogp.nhl_app.app.extensions.svg.SvgSoftwareLayerSetter
+import com.alonsogp.nhl_app.app.presentation.glide.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.ViewItemStatsBinding
 import com.alonsogp.nhl_app.features.stats.domain.TeamOneStatModel
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 
 class StatsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -20,10 +20,10 @@ class StatsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
     fun bind(team: TeamOneStatModel, position: Int) {
         val binding = ViewItemStatsBinding.bind(view)
         val position = position + 1
-        Log.d("@dev", "$team")
+
         imageViewNet = binding.teamLogo
 
-        requestBuilder = GlideApp.with(binding.root.context)
+        requestBuilder = Glide.with(binding.root.context)
             .`as`(PictureDrawable::class.java)
             .listener(SvgSoftwareLayerSetter())
 

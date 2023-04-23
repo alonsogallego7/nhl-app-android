@@ -1,4 +1,4 @@
-package com.alonsogp.nhl_app.app.extensions.svg
+package com.alonsogp.nhl_app.app.presentation.glide
 
 import android.graphics.drawable.PictureDrawable
 import androidx.annotation.Nullable

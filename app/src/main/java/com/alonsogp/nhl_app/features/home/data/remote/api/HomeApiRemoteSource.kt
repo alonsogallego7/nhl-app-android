@@ -46,7 +46,6 @@ class HomeApiRemoteSource @Inject constructor(private val apiClient: HomeApiEndP
 
     override suspend fun getPlayersByTeam(id: Int): Either<ErrorApp, List<PlayerModel>> {
         return apiCall {
-            Log.d("@dev", "Antes de obtener players")
             apiClient.getPlayersByTeam(id)
         }.map {
             it.roster.map {

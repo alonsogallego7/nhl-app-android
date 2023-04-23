@@ -5,10 +5,10 @@ import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsogp.nhl_app.app.extensions.svg.GlideApp
-import com.alonsogp.nhl_app.app.extensions.svg.SvgSoftwareLayerSetter
+import com.alonsogp.nhl_app.app.presentation.glide.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.ViewItemStandingBinding
 import com.alonsogp.nhl_app.features.standings.domain.TeamRecordsModel
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 
 class StandingsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -22,7 +22,7 @@ class StandingsViewHolder(private val view: View) : RecyclerView.ViewHolder(view
 
         imageViewNet = binding.teamLogo
 
-        requestBuilder = GlideApp.with(binding.root.context)
+        requestBuilder = Glide.with(binding.root.context)
             .`as`(PictureDrawable::class.java)
             .listener(SvgSoftwareLayerSetter())
 

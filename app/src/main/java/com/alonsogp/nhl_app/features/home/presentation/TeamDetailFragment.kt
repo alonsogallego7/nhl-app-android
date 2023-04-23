@@ -16,16 +16,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alonsogp.nhl_app.R
-import com.alonsogp.nhl_app.app.extensions.svg.GlideApp
-import com.alonsogp.nhl_app.app.extensions.svg.SvgSoftwareLayerSetter
+import com.alonsogp.nhl_app.app.presentation.glide.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.FragmentTeamDetailBinding
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailWithRosterModel
 import com.alonsogp.nhl_app.features.home.presentation.adapter.PlayersAdapter
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TeamDetailFragment: Fragment() {
+class TeamDetailFragment : Fragment() {
 
     private var binding: FragmentTeamDetailBinding? = null
     private val viewModel by viewModels<TeamDetailViewModel>()
@@ -74,7 +74,7 @@ class TeamDetailFragment: Fragment() {
 
             imageViewNet = teamLogo
 
-            requestBuilder = GlideApp.with(root.context)
+            requestBuilder = Glide.with(root.context)
                 .`as`(PictureDrawable::class.java)
                 .listener(SvgSoftwareLayerSetter())
 
@@ -98,13 +98,16 @@ class TeamDetailFragment: Fragment() {
                     uiState.teamDetail?.let { team ->
                         bind(team)
                         playersAdapter.setDataItems(team.roster)
-                        binding?.listPlayers?.viewTreeObserver?.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                        binding?.listPlayers?.viewTreeObserver?.addOnGlobalLayoutListener(object :
+                            ViewTreeObserver.OnGlobalLayoutListener {
                             override fun onGlobalLayout() {
                                 val totalHeight = 220 * playersAdapter.itemCount
                                 val layoutParams = binding?.listPlayers?.layoutParams
                                 layoutParams?.height = totalHeight
                                 binding?.listPlayers?.layoutParams = layoutParams
-                                binding?.listPlayers?.viewTreeObserver?.removeOnGlobalLayoutListener(this)
+                                binding?.listPlayers?.viewTreeObserver?.removeOnGlobalLayoutListener(
+                                    this
+                                )
                             }
                         })
                     }

@@ -1,4 +1,4 @@
-package com.alonsogp.nhl_app.app.extensions.svg
+package com.alonsogp.nhl_app.app.presentation.glide
 
 import com.bumptech.glide.load.Options
 import com.bumptech.glide.load.ResourceDecoder
