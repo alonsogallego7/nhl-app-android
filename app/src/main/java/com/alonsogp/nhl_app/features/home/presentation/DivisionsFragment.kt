@@ -35,8 +35,7 @@ class DivisionsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObservers()
-        viewModel.getDivisions(args.conferenceId)
+        bind()
     }
 
     private fun setupView() {
@@ -65,32 +64,20 @@ class DivisionsFragment: Fragment() {
         }
     }
 
-    private fun bind(division: DivisionModel) {
+    private fun bind() {
         binding?.apply {
-            if (division.name == "Pacific" || division.name == "Atlantic") {
-                cardview1Text.text = division.name + " Division"
-            }
-            if (division.name == "Central" || division.name == "Metropolitan") {
-                cardview2Text.text = division.name + " Division"
+            if (args.conferenceId == 5) {
+                cardview1Image.setImageResource(R.drawable.img_pacific_division)
+                cardview1Text.text = "Pacific Division"
+                cardview2Image.setImageResource(R.drawable.img_central_division)
+                cardview2Text.text = "Central Division"
+            } else {
+                cardview1Image.setImageResource(R.drawable.img_atlantic_division)
+                cardview1Text.text = "Atlantic Division"
+                cardview2Image.setImageResource(R.drawable.img_metropolitan_division)
+                cardview2Text.text = "Metropolitan Division"
             }
         }
-    }
-
-    private fun setupObservers() {
-        val newsFeedSubscriber =
-            Observer<DivisionsViewModel.UiState> { uiState ->
-                uiState.error?.let { error ->
-                    Log.d("@dev", "Error: $error")
-                } ?: run {
-                    uiState.divisions?.let { divisions ->
-                        divisions.map { division ->
-                            Log.d("@dev", "Division: $division")
-                            bind(division)
-                        }
-                    }
-                }
-            }
-        viewModel.uiState.observe(viewLifecycleOwner, newsFeedSubscriber)
     }
 
     private fun navigateToTeams(divisionId: Int) {

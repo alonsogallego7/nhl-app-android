@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginStart="20dp"
+    android:layout_marginStart="15dp"
     android:layout_marginEnd="20dp"
     android:layout_marginTop="12dp">
 
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/team_name" />
 
     <com.google.android.material.divider.MaterialDivider
-        android:layout_width="188dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"

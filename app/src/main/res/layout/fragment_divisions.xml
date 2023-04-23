@@ -11,8 +11,8 @@
 
         <include
             android:id="@+id/layout_toolbar"
-            app:navigationIcon="@drawable/ic_back"
-            layout="@layout/view_section_toolbar" />
+            layout="@layout/view_section_toolbar"
+            app:navigationIcon="@drawable/ic_back" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -36,12 +36,12 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardview1"
-            app:strokeColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/info_text">
+            app:layout_constraintTop_toBottomOf="@id/info_text"
+            app:strokeColor="@color/black">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,8 +52,7 @@
                     android:id="@+id/cardview1_image"
                     android:layout_width="match_parent"
                     android:layout_height="172dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/img_western_title" />
+                    android:scaleType="centerCrop" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -104,8 +103,7 @@
                     android:id="@+id/cardview2_image"
                     android:layout_width="match_parent"
                     android:layout_height="172dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/img_eastern_title" />
+                    android:scaleType="centerCrop" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

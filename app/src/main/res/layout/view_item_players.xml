@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="110dp"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="12dp">
+    app:layout_constraintEnd_toEndOf="parent">
 
     <ImageView
         android:id="@+id/player_image"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -52,13 +52,5 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/player_image" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_number" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
