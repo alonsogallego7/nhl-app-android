@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.databinding.FragmentConferencesBinding
 
 class StandingsConferencesFragment : Fragment() {
@@ -31,7 +32,12 @@ class StandingsConferencesFragment : Fragment() {
     private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
-                title = "Standings"
+                if (args.typeId == 1) {
+                    title = "By Conference"
+                } else if (args.typeId == 2) {
+                    title = "Wild Card"
+                }
+                setNavigationIcon(R.drawable.ic_back)
                 setNavigationOnClickListener {
                     findNavController().navigateUp()
                 }

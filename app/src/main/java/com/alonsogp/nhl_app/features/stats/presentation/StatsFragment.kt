@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.databinding.FragmentStatsBinding
 import com.alonsogp.nhl_app.features.stats.presentation.adapter.StatsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +47,14 @@ class StatsFragment : Fragment() {
     private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
-                title = "Stats"
+                if (args.typeId == 1) {
+                    title = "Goals per game"
+                } else if (args.typeId == 2) {
+                    title = "Shots per game"
+                } else {
+                    title = "Shooting %"
+                }
+                setNavigationIcon(R.drawable.ic_back)
                 setNavigationOnClickListener {
                     findNavController().navigateUp()
                 }

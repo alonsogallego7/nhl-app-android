@@ -41,7 +41,16 @@ class DivisionsFragment: Fragment() {
     private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
-                title = "Teams & Players"
+                if (args.conferenceId == 5) {
+                    layoutToolbar.sectionToolbar.apply {
+                        title = "Western Conf."
+                    }
+                } else {
+                    layoutToolbar.sectionToolbar.apply {
+                        title = "Eastern Conf."
+                    }
+                }
+                setNavigationIcon(R.drawable.ic_back)
                 setNavigationOnClickListener {
                     findNavController().navigateUp()
                 }

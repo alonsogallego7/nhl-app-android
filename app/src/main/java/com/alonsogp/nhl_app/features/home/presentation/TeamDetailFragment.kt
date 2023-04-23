@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.app.extensions.svg.GlideApp
 import com.alonsogp.nhl_app.app.extensions.svg.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.FragmentTeamDetailBinding
@@ -51,7 +52,8 @@ class TeamDetailFragment: Fragment() {
     private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
-                title = "Teams & Players"
+                title = "Team"
+                setNavigationIcon(R.drawable.ic_back)
                 setNavigationOnClickListener {
                     findNavController().navigateUp()
                 }

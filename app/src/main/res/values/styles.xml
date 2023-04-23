@@ -14,8 +14,12 @@
         <item name="titleCentered">true</item>
     </style>
 
+    <style name="DetailToolbar" parent="AppToolbar">
+        <item name="android:textAlignment">gravity</item>
+    </style>
+
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="fontFamily">@font/overpass_mono_bold</item>
     </style>
 

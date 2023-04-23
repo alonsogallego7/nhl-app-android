@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.databinding.FragmentStandingsBinding
 import com.alonsogp.nhl_app.features.standings.presentation.adapter.StandingsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +42,22 @@ class StandingsFragment : Fragment() {
     private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
-                title = "Standings"
+                if (args.typeId == 1) {
+                    if (args.conferenceId == 5) {
+                        title = "Western Conf."
+                    } else {
+                        title = "Eastern Conf."
+                    }
+                } else if (args.typeId == 2) {
+                    if (args.conferenceId == 5) {
+                        title = "Wild Card(West)"
+                    } else {
+                        title = "Wild Card(East)"
+                    }
+                } else {
+                    title = "League"
+                }
+                setNavigationIcon(R.drawable.ic_back)
                 setNavigationOnClickListener {
                     findNavController().navigateUp()
                 }

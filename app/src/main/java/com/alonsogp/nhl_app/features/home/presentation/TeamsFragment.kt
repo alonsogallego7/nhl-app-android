@@ -52,8 +52,21 @@ class TeamsFragment: Fragment() {
     private fun setupView() {
         binding?.apply {
             layoutToolbar.sectionToolbar.apply {
-                title = "Teams & Players"
+                if (args.divisionId == 17) {
+                    title = "Atlantic Div."
+                } else if (args.divisionId == 16) {
+                    title = "Central Div."
+                } else if (args.divisionId == 18) {
+                    title = "Metropolitan Div."
+                } else {
+                    title = "Pacific Div."
+                }
+                setNavigationIcon(R.drawable.ic_back)
+                setNavigationOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
+
             listTeams.apply {
                 adapter = teamsAdapter
                 layoutManager = LinearLayoutManager(
