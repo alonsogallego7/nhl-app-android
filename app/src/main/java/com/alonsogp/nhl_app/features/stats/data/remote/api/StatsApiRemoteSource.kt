@@ -14,17 +14,15 @@ class StatsApiRemoteSource @Inject constructor(private val apiClient: StatsApiEn
 
     override suspend fun getStats(): Either<ErrorApp, List<TeamStatsModel>> {
         return apiCall {
-            Log.d("@dev", "ANTES DE GET_STATS")
             apiClient.getStats()
         }.map {
-            Log.d("@dev", "DESPUES DE GET_STATS")
             it.teams.map { team ->
                 TeamStatsModel(
                     team.id,
                     team.name,
                     team.teamStats.first().splits.first().stat.goalsPerGame,
                     team.teamStats.first().splits.first().stat.shotsPerGame,
-                    team.teamStats.first().splits.first().stat.shootingPctg
+                    team.teamStats.first().splits.first().stat.shootingPctg.toDouble()
                 )
             }
         }

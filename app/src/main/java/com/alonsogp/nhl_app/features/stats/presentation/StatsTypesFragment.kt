@@ -23,6 +23,7 @@ class StatsTypesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStatsTypesBinding.inflate(inflater)
+        setupView()
         return binding?.root
     }
 
@@ -38,10 +39,21 @@ class StatsTypesFragment : Fragment() {
                     findNavController().navigateUp()
                 }
             }
+            cardview1.setOnClickListener {
+                navigateToStats(1)
+            }
+            cardview2.setOnClickListener {
+                navigateToStats(2)
+            }
+            cardview3.setOnClickListener {
+                navigateToStats(3)
+            }
         }
     }
 
     private fun navigateToStats(typeId: Int) {
-
+        findNavController().navigate(
+            StatsTypesFragmentDirections.actionToStatsFragment(typeId)
+        )
     }
 }

@@ -17,7 +17,6 @@ class StatsDataRepository @Inject constructor(
 ) : StatsRepository {
     override suspend fun getGoalsPerGame(): Either<ErrorApp, List<TeamOneStatModel>> {
         return remoteDataSource.getStats().flatMap {
-            Log.d("@dev", "$it")
             localDataSource.saveStats(it)
             localDataSource.getGoalsPerGame()
         }

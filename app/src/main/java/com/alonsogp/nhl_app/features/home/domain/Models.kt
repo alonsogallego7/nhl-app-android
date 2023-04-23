@@ -47,7 +47,7 @@ data class VenueModel(
 
 data class PlayerModel(
     val person: PersonModel,
-    val jerseyNumber: String,
+    val jerseyNumber: String?,
     val position: PositionModel,
 )
 

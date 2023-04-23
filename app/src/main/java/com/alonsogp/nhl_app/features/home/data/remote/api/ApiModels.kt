@@ -55,7 +55,7 @@ data class RosterApiModel(
 
 data class PlayerApiModel(
     @SerializedName("person") val person: PersonApiModel,
-    @SerializedName("jerseyNumber") val jerseyNumber: String,
+    @SerializedName("jerseyNumber") val jerseyNumber: String?,
     @SerializedName("position") val position: PositionApiModel
 )
 

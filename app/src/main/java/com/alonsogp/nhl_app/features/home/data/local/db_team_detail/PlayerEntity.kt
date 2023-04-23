@@ -14,7 +14,7 @@ data class PlayerEntity(
     @PrimaryKey
     @ColumnInfo(name = "player_id") val id: Int,
     @Embedded val person: PersonEntity,
-    @ColumnInfo(name = "jersey_number") val jerseyNumber: String,
+    @ColumnInfo(name = "jersey_number") val jerseyNumber: String?,
     @Embedded val position: PositionEntity,
     @ColumnInfo(name = "team_id") val teamId: Int
 )

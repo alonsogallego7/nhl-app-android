@@ -26,5 +26,5 @@ fun StatShotsPerGameEntity.toDomain(): TeamOneStatModel = TeamOneStatModel(
 fun StatShootingPctgEntity.toDomain(): TeamOneStatModel = TeamOneStatModel(
     this.id,
     this.name,
-    this.shootingPctg
+    this.shootingPctg.toString()
 )

@@ -5,7 +5,7 @@ data class TeamStatsModel(
     val name: String,
     val goalsPerGame: String,
     val shotsPerGame: String,
-    val shootingPctg: String
+    val shootingPctg: Double
 )
 
 data class TeamOneStatModel(

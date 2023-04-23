@@ -1,5 +1,6 @@
 package com.alonsogp.nhl_app.features.stats.data.local.db
 
+import android.util.Log
 import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.app.domain.functional.Either
 import com.alonsogp.nhl_app.app.domain.functional.left
@@ -52,6 +53,7 @@ class StatsDbLocalDataSource @Inject constructor(private val statsDao: StatsDao)
                 emptyList<TeamOneStatModel>().right()
             } else {
                 teams.map {
+                    Log.d("@dev", "SPCT: $it")
                     it.toDomain()
                 }.right()
             }

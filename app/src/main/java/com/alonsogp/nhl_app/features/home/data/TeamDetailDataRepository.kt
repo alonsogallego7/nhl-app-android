@@ -15,26 +15,11 @@ class TeamDetailDataRepository @Inject constructor(
 ) : TeamDetailRepository {
 
     override suspend fun getById(teamId: Int): Either<ErrorApp, TeamDetailWithRosterModel> {
-
-        val teamWithRoasterLocal = localDataSource.getById(teamId)
-
-        if (teamWithRoasterLocal.isLeft() || teamWithRoasterLocal == null) {
-            return remoteDataSource.getTeamById(teamId).flatMap { remoteTeamDetail ->
-                remoteDataSource.getPlayersByTeam(teamId).map { remotePlayerList ->
-                    val teamDetailWithRoster = TeamDetailWithRosterModel(
-                        remoteTeamDetail.id,
-                        remoteTeamDetail.name,
-                        remoteTeamDetail.venue,
-                        remoteTeamDetail.abbreviation,
-                        remoteTeamDetail.firstYearOfPlay,
-                        remotePlayerList
-                    )
-                    localDataSource.save(remoteTeamDetail, remotePlayerList)
-                    teamDetailWithRoster
-                }
+        return remoteDataSource.getTeamById(teamId).flatMap { remoteTeamDetail ->
+            remoteDataSource.getPlayersByTeam(teamId).flatMap { remotePlayerList ->
+                localDataSource.save(remoteTeamDetail, remotePlayerList)
+                localDataSource.getById(teamId)
             }
-        } else {
-            return teamWithRoasterLocal
         }
     }
 }
