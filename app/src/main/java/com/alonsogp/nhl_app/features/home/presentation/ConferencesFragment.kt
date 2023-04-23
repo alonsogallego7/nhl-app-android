@@ -1,6 +1,5 @@
 package com.alonsogp.nhl_app.features.home.presentation
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

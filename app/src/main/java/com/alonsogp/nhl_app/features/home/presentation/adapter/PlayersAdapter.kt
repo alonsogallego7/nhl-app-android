@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.features.home.domain.PlayerModel
 
-class PlayersAdapter: RecyclerView.Adapter<PlayersViewHolder>() {
+class PlayersAdapter : RecyclerView.Adapter<PlayersViewHolder>() {
 
     private val dataItems = mutableListOf<PlayerModel>()
 

@@ -24,13 +24,13 @@ class TeamsViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             getTeamsUseCase.invoke(divisionId).fold({
                 errorResponse(it)
-            },{
+            }, {
                 successResponse(it)
             })
         }
     }
 
-    private fun errorResponse(error : ErrorApp){
+    private fun errorResponse(error: ErrorApp) {
         _uiState.postValue(
             UiState(
                 isLoading = false,
@@ -39,7 +39,7 @@ class TeamsViewModel @Inject constructor(
         )
     }
 
-    private fun successResponse(teams : List<TeamModel>){
+    private fun successResponse(teams: List<TeamModel>) {
         _uiState.postValue(
             UiState(
                 isLoading = false,

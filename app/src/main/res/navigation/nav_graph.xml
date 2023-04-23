@@ -17,6 +17,24 @@
         android:id="@+id/action_to_stats_types_section"
         app:destination="@id/stats_types_fragment" />
 
+    <action
+        android:id="@+id/action_to_data_error"
+        app:destination="@id/data_error_fragment"
+        app:popUpTo="@+id/data_error_fragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_to_no_internet_error"
+        app:destination="@id/no_internet_error_fragment"
+        app:popUpTo="@+id/no_internet_error_fragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_to_unknown_error"
+        app:destination="@id/unknown_error_fragment"
+        app:popUpTo="@+id/unknown_error_fragment"
+        app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/conferences_fragment"
         android:name="com.alonsogp.nhl_app.features.home.presentation.ConferencesFragment"
@@ -142,5 +160,21 @@
             app:nullable="false" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/data_error_fragment"
+        android:name="com.alonsogp.nhl_app.app.presentation.error.DataErrorFragment"
+        tools:layout="@layout/fragment_error" />
+
+    <fragment
+        android:id="@+id/no_internet_error_fragment"
+        android:name="com.alonsogp.nhl_app.app.presentation.error.NoInternetErrorFragment"
+        tools:layout="@layout/fragment_error" />
+
+    <fragment
+        android:id="@+id/unknown_error_fragment"
+        android:name="com.alonsogp.nhl_app.app.presentation.error.UnknownErrorFragment"
+        tools:layout="@layout/fragment_error" />
+
 
 </navigation>

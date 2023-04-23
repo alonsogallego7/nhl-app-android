@@ -3,7 +3,6 @@ package com.alonsogp.nhl_app.features.home.presentation
 import android.graphics.drawable.PictureDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alonsogp.nhl_app.R
+import com.alonsogp.nhl_app.app.presentation.error.AppErrorHandler
 import com.alonsogp.nhl_app.app.presentation.glide.SvgSoftwareLayerSetter
 import com.alonsogp.nhl_app.databinding.FragmentTeamDetailBinding
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailWithRosterModel
@@ -23,6 +23,7 @@ import com.alonsogp.nhl_app.features.home.presentation.adapter.PlayersAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class TeamDetailFragment : Fragment() {
@@ -33,6 +34,9 @@ class TeamDetailFragment : Fragment() {
     private val playersAdapter = PlayersAdapter()
     private var requestBuilder: RequestBuilder<PictureDrawable>? = null
     private var imageViewNet: ImageView? = null
+
+    @Inject
+    lateinit var appErrorHandler: AppErrorHandler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -93,23 +97,28 @@ class TeamDetailFragment : Fragment() {
         val teamSubscriber =
             Observer<TeamDetailViewModel.UiState> { uiState ->
                 uiState.error?.let { error ->
-                    Log.d("@dev", "Error: $error")
+                    appErrorHandler.navigateToError(error)
                 } ?: run {
-                    uiState.teamDetail?.let { team ->
-                        bind(team)
-                        playersAdapter.setDataItems(team.roster)
-                        binding?.listPlayers?.viewTreeObserver?.addOnGlobalLayoutListener(object :
-                            ViewTreeObserver.OnGlobalLayoutListener {
-                            override fun onGlobalLayout() {
-                                val totalHeight = 220 * playersAdapter.itemCount
-                                val layoutParams = binding?.listPlayers?.layoutParams
-                                layoutParams?.height = totalHeight
-                                binding?.listPlayers?.layoutParams = layoutParams
-                                binding?.listPlayers?.viewTreeObserver?.removeOnGlobalLayoutListener(
-                                    this
-                                )
-                            }
-                        })
+                    if (uiState.isLoading) {
+                        showLoading()
+                    } else {
+                        hideLoading()
+                        uiState.teamDetail?.let { team ->
+                            bind(team)
+                            playersAdapter.setDataItems(team.roster)
+                            binding?.listPlayers?.viewTreeObserver?.addOnGlobalLayoutListener(object :
+                                ViewTreeObserver.OnGlobalLayoutListener {
+                                override fun onGlobalLayout() {
+                                    val totalHeight = 220 * playersAdapter.itemCount
+                                    val layoutParams = binding?.listPlayers?.layoutParams
+                                    layoutParams?.height = totalHeight
+                                    binding?.listPlayers?.layoutParams = layoutParams
+                                    binding?.listPlayers?.viewTreeObserver?.removeOnGlobalLayoutListener(
+                                        this
+                                    )
+                                }
+                            })
+                        }
                     }
                 }
             }
@@ -121,5 +130,13 @@ class TeamDetailFragment : Fragment() {
         if (imageViewNet != null) {
             requestBuilder?.load(uri)?.into(imageViewNet!!)
         }
+    }
+
+    private fun showLoading() {
+        binding?.loadingView?.show()
+    }
+
+    private fun hideLoading() {
+        binding?.loadingView?.hide()
     }
 }

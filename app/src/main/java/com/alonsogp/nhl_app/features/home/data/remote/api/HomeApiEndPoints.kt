@@ -5,12 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface HomeApiEndPoints {
-    @GET("conferences.json")
-    suspend fun getConferences(): Response<ConferenceListApiModel>
-
-    @GET("divisions.json")
-    suspend fun getDivisions(): Response<DivisionListApiModel>
-
     @GET("teams.json")
     suspend fun getTeams(): Response<TeamListApiModel>
 

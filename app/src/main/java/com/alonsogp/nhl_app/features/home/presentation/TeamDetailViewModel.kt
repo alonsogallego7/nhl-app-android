@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alonsogp.nhl_app.app.domain.ErrorApp
 import com.alonsogp.nhl_app.features.home.domain.GetTeamDetailUseCase
-import com.alonsogp.nhl_app.features.home.domain.TeamDetailModel
 import com.alonsogp.nhl_app.features.home.domain.TeamDetailWithRosterModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

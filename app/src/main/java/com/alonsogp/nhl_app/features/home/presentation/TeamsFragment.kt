@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,25 +13,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alonsogp.nhl_app.R
+import com.alonsogp.nhl_app.app.presentation.error.AppErrorHandler
 import com.alonsogp.nhl_app.databinding.FragmentTeamsBinding
 import com.alonsogp.nhl_app.features.home.presentation.adapter.TeamsAdapter
-import com.faltenreich.skeletonlayout.Skeleton
-import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class TeamsFragment: Fragment() {
+class TeamsFragment : Fragment() {
 
     private var binding: FragmentTeamsBinding? = null
     private val viewModel by viewModels<TeamsViewModel>()
     private val args: TeamsFragmentArgs by navArgs()
     private val teamsAdapter = TeamsAdapter()
-    private var skeleton: Skeleton? = null
+
+    @Inject
+    lateinit var appErrorHandler: AppErrorHandler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,7 +70,6 @@ class TeamsFragment: Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-                skeleton = applySkeleton(R.layout.view_item_teams, 6)
             }
             teamsAdapter.setOnClickItem { teamId ->
                 navigateToTeamDetail(teamId)
@@ -86,10 +81,15 @@ class TeamsFragment: Fragment() {
         val newsFeedSubscriber =
             Observer<TeamsViewModel.UiState> { uiState ->
                 uiState.error?.let { error ->
-                    Log.d("@dev", "Error: $error")
+                    appErrorHandler.navigateToError(error)
                 } ?: run {
-                    uiState.teams?.let { teams ->
-                        teamsAdapter.setDataItems(teams)
+                    if (uiState.isLoading) {
+                        showLoading()
+                    } else {
+                        hideLoading()
+                        uiState.teams?.let { teams ->
+                            teamsAdapter.setDataItems(teams)
+                        }
                     }
                 }
             }
@@ -100,5 +100,13 @@ class TeamsFragment: Fragment() {
         findNavController().navigate(
             TeamsFragmentDirections.actionToTeamDetailFragment(teamId)
         )
+    }
+
+    private fun showLoading() {
+        binding?.loadingView?.show()
+    }
+
+    private fun hideLoading() {
+        binding?.loadingView?.hide()
     }
 }

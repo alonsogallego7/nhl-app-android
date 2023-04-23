@@ -78,4 +78,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.alonsogp.nhl_app.app.presentation.loading.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

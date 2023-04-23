@@ -2,14 +2,6 @@ package com.alonsogp.nhl_app.features.home.data.remote.api
 
 import com.google.gson.annotations.SerializedName
 
-data class ConferenceListApiModel(
-    @SerializedName("conferences") val conferences: List<ConferenceApiModel>
-)
-
-data class DivisionListApiModel(
-    @SerializedName("divisions") val divisions: List<DivisionApiModel>
-)
-
 data class TeamListApiModel(
     @SerializedName("teams") val teams: List<TeamApiModel>
 )

@@ -1,6 +1,5 @@
 package com.alonsogp.nhl_app.features.home.data.local.db_team_detail
 
-import com.alonsogp.nhl_app.features.home.data.remote.api.toDomain
 import com.alonsogp.nhl_app.features.home.domain.*
 
 // TeamDetailEntity

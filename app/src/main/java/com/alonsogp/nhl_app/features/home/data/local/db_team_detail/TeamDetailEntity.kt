@@ -1,6 +1,9 @@
 package com.alonsogp.nhl_app.features.home.data.local.db_team_detail
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 const val TABLE_NAME_TEAM_DETAIL = "teams_detail"
 const val TABLE_NAME_VENUE = "venues"

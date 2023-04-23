@@ -1,7 +1,6 @@
 package com.alonsogp.nhl_app.features.stats.di
 
 import com.alonsogp.nhl_app.app.data.local.db.AppDatabase
-import com.alonsogp.nhl_app.features.home.data.local.db_team_detail.TeamDetailDao
 import com.alonsogp.nhl_app.features.stats.data.local.db.StatsDao
 import com.alonsogp.nhl_app.features.stats.data.remote.api.StatsApiEndPoints
 import dagger.Module

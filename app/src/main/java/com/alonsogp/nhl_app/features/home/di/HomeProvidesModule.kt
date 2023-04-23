@@ -1,8 +1,6 @@
 package com.alonsogp.nhl_app.features.home.di
 
 import com.alonsogp.nhl_app.app.data.local.db.AppDatabase
-import com.alonsogp.nhl_app.features.home.data.local.db_conferences.ConferencesDao
-import com.alonsogp.nhl_app.features.home.data.local.db_divisions.DivisionsDao
 import com.alonsogp.nhl_app.features.home.data.local.db_team_detail.TeamDetailDao
 import com.alonsogp.nhl_app.features.home.data.local.db_teams.TeamsDao
 import com.alonsogp.nhl_app.features.home.data.remote.api.HomeApiEndPoints
@@ -20,17 +18,6 @@ object HomeProvidesModule {
     @Provides
     fun providesTeamsApiEndPoints(retrofit: Retrofit): HomeApiEndPoints =
         retrofit.create(HomeApiEndPoints::class.java)
-
-
-    @Provides
-    @Singleton
-    fun provideConferencesDao(appDatabase: AppDatabase): ConferencesDao =
-        appDatabase.conferencesDao()
-
-    @Provides
-    @Singleton
-    fun provideDivisionsDao(appDatabase: AppDatabase): DivisionsDao =
-        appDatabase.divisionsDao()
 
     @Provides
     @Singleton

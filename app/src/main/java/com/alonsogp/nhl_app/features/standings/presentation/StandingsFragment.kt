@@ -12,9 +12,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alonsogp.nhl_app.R
+import com.alonsogp.nhl_app.app.presentation.error.AppErrorHandler
 import com.alonsogp.nhl_app.databinding.FragmentStandingsBinding
 import com.alonsogp.nhl_app.features.standings.presentation.adapter.StandingsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class StandingsFragment : Fragment() {
@@ -23,6 +25,9 @@ class StandingsFragment : Fragment() {
     private val viewModel by viewModels<StandingsViewModel>()
     private val args: StandingsFragmentArgs by navArgs()
     private val standingsAdapter = StandingsAdapter()
+
+    @Inject
+    lateinit var appErrorHandler: AppErrorHandler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,27 +82,40 @@ class StandingsFragment : Fragment() {
         val newsFeedSubscriber =
             Observer<StandingsViewModel.UiState> { uiState ->
                 uiState.error?.let { error ->
-                    Log.d("@dev", "Error: $error")
+                    appErrorHandler.navigateToError(error)
                 } ?: run {
-                    uiState.records?.let { records ->
-                        if (args.typeId == 1 || args.typeId == 2) {
-                            if (args.conferenceId == 5) {
-                                standingsAdapter.setDataItems(
-                                    records[1].teamRecords
-                                )
+                    if (uiState.isLoading) {
+                        showLoading()
+                    } else {
+                        hideLoading()
+                        uiState.records?.let { records ->
+                            if (args.typeId == 1 || args.typeId == 2) {
+                                if (args.conferenceId == 5) {
+                                    standingsAdapter.setDataItems(
+                                        records[1].teamRecords
+                                    )
+                                } else {
+                                    standingsAdapter.setDataItems(
+                                        records[0].teamRecords
+                                    )
+                                }
                             } else {
                                 standingsAdapter.setDataItems(
-                                    records[0].teamRecords
+                                    records.first().teamRecords
                                 )
                             }
-                        } else {
-                            standingsAdapter.setDataItems(
-                                records.first().teamRecords
-                            )
                         }
                     }
                 }
             }
         viewModel.uiState.observe(viewLifecycleOwner, newsFeedSubscriber)
+    }
+
+    private fun showLoading() {
+        binding?.loadingView?.show()
+    }
+
+    private fun hideLoading() {
+        binding?.loadingView?.hide()
     }
 }

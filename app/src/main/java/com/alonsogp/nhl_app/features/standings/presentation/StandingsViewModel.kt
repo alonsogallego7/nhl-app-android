@@ -26,7 +26,7 @@ class StandingsViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 getStandingsUseCase.invoke("byConference").fold({
                     errorResponse(it)
-                },{
+                }, {
                     successResponse(it)
                 })
             }
@@ -34,7 +34,7 @@ class StandingsViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 getStandingsUseCase.invoke("wildCard").fold({
                     errorResponse(it)
-                },{
+                }, {
                     successResponse(it)
                 })
             }
@@ -42,7 +42,7 @@ class StandingsViewModel @Inject constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 getStandingsUseCase.invoke("byLeague").fold({
                     errorResponse(it)
-                },{
+                }, {
                     successResponse(it)
                 })
             }
@@ -50,7 +50,7 @@ class StandingsViewModel @Inject constructor(
 
     }
 
-    private fun errorResponse(error : ErrorApp){
+    private fun errorResponse(error: ErrorApp) {
         _uiState.postValue(
             UiState(
                 isLoading = false,
@@ -59,7 +59,7 @@ class StandingsViewModel @Inject constructor(
         )
     }
 
-    private fun successResponse(records : List<RecordModel>){
+    private fun successResponse(records: List<RecordModel>) {
         _uiState.postValue(
             UiState(
                 isLoading = false,

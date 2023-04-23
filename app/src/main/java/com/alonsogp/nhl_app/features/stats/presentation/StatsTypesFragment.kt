@@ -1,16 +1,12 @@
 package com.alonsogp.nhl_app.features.stats.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.alonsogp.nhl_app.databinding.FragmentStatsBinding
 import com.alonsogp.nhl_app.databinding.FragmentStatsTypesBinding
-import com.alonsogp.nhl_app.features.home.presentation.DivisionsFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

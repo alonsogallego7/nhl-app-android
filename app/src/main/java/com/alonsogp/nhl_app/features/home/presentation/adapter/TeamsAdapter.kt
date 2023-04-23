@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.features.home.domain.TeamModel
 
-class TeamsAdapter: RecyclerView.Adapter<TeamsViewHolder>() {
+class TeamsAdapter : RecyclerView.Adapter<TeamsViewHolder>() {
 
     private val dataItems = mutableListOf<TeamModel>()
     private var itemClick: ((Int) -> Unit)? = null

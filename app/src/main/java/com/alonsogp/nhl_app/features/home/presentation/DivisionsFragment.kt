@@ -1,27 +1,21 @@
 package com.alonsogp.nhl_app.features.home.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.alonsogp.nhl_app.R
 import com.alonsogp.nhl_app.databinding.FragmentDivisionsBinding
-import com.alonsogp.nhl_app.features.home.domain.DivisionModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DivisionsFragment: Fragment() {
 
     private var binding: FragmentDivisionsBinding? = null
-    private val viewModel by viewModels<DivisionsViewModel>()
     private val args: DivisionsFragmentArgs by navArgs()
 
     override fun onCreateView(
