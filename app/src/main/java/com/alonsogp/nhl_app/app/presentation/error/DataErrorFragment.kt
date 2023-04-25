@@ -12,7 +12,7 @@ class DataErrorFragment : ErrorAppFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val errorDescription = "Oops! It seems like an unknown error has occurred. Please, try again or restart the app."
-        val errorTitle = "Unknown Error"
+        val errorTitle = "Error: Unknown"
 
         setErrorDescription(errorDescription)
         setErrorTitle(errorTitle)

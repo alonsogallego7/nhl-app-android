@@ -13,7 +13,7 @@ class NoInternetErrorFragment : ErrorAppFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val errorDescription = "Oops! It seems like you do not have internet connection. Please, check your connection and try again."
-        val errorTitle = "No Internet Error"
+        val errorTitle = "Error: No Internet"
 
         setErrorDescription(errorDescription)
         setErrorTitle(errorTitle)
