@@ -21,4 +21,3 @@ How I have developed it:
 - Hilt to simplify the dependences injection.
 
 As I learn new things about programming, I update this app adding more and more improvements. As I mentioned before, this app is just for personal purpose. 
-Thanks for reading.
