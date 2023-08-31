@@ -7,7 +7,7 @@ Features:
 - Standings: There are three types of standings to choose (By Conference, Wild Card or the whole League). The user can view the table of teams ordered by points and some information about every team (won games, lost games and overtime games).
 - Teams Stats: There are also three types to select (Goals per game, Shots per game and Shooting percentage). The design is similar than the Standings one, but here it's shown only the stat number of every team.
 
-How I have developed it:
+How I have developed it (or what I have used for it):
 - Clean Architecture and MVVM
 - Retrofit to obtain data from the API REST.
 - Room database to store some information.
@@ -20,4 +20,4 @@ How I have developed it:
 - Loading view and error view.
 - Hilt to simplify the dependences injection.
 
-As I learn new things about programming, I update this app adding more and more improvements. As I mentioned before, this app is just for personal purpose. 
+As I mentioned before, this app is just for personal purpose. 
