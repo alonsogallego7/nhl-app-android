@@ -1,6 +1,5 @@
 ## App about the National Hockey League
-This app provides information about teams, standings and stats from the NHL API and it does not have commercial purposes.
-It has been developed in Kotlin through Android Studio.
+This app provides information about teams, standings and stats from the NHL API and it has been developed in Kotlin through Android Studio.
 
 Features:
 - Teams & Players: The user can select any team of the league to view its information and list of players, ordered by position.
